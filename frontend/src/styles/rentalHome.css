@@ -1,0 +1,137 @@
+.body{
+    background-color: aliceblue;
+}
+
+.carausel{
+    background-color: gray;
+    margin: 0%;
+    padding-top: 0%;
+    height: 86vh;
+}
+
+.floorPlans{
+    padding-top: 5%;
+}
+
+.floorPlans h1{
+    text-align: center;
+    font-size: 50px;
+    color: rgba(0, 0, 0, 0.89);
+}
+
+.floorPlans h2{
+    text-align: center;
+    color: rgba(0, 217, 255, 0.808);
+}
+
+.floorPlans p {
+    font-family: 'Times New Roman';
+    text-align: center;
+    padding-left: 7%;
+    padding-right: 7%;
+    font-size: 30px;
+}
+
+.floorPlans button {
+    border: none;
+    color: #008CBA;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    margin-left: 42%;
+    border: 2px solid #008CBA;
+  }
+
+.floorPlans button:hover {
+    background-color: #008CBA; /* Green */
+    color: white;
+  }
+
+  .ammenities{
+    padding-top: 5%;
+}
+
+.row{
+    margin-left: 3%;
+}
+
+.ammenities h1{
+    text-align: center;
+    margin-bottom: 5%;
+    font-size: 50px;
+    color: rgba(0, 0, 0, 0.89);
+}
+.column{
+    width: 1300px;
+    display: block;
+    height: auto;
+}
+
+.column > img{
+   float: left; width: 400px;
+   height: 200px;
+   margin: 5px 8px;
+}
+
+.ammenities button {
+    border: none;
+    color: #008CBA;
+    background-color: rgba(128, 128, 128, 0.308);
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    margin-left: 42%;
+    border: 2px solid #008CBA;
+    margin-top: 5%;
+  }
+
+.ammenities button:hover {
+    background-color: #008CBA; /* Green */
+    color: white;
+  }
+
+.testimonial h1{
+    text-align: center;
+    font-size: 50px;
+    color: rgba(0, 0, 0, 0.89);
+}
+
+.testimonial p{
+    text-align: center;
+    font-size: 35px;
+    color: #008CBA;
+}
+
+.testimonial{
+    margin-top: 3%;
+    background-image: url("../images/Test.png");
+    height: 600px; 
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 150px;
+  }
+
+.review{
+    width: 1000px;
+    height: auto;
+    margin: 0 auto;
+    /* margin-top: 10%; */
+    padding: 10px;
+    position: relative;
+    /* background-color: rgba(128, 128, 128, 0.438); */
+    background-color: antiquewhite;
+}

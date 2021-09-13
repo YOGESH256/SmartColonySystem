@@ -1,0 +1,39 @@
+.video-responsive {
+    overflow: hidden;
+    padding-bottom: 56.25%;
+    position: relative;
+    height: 0;
+    left: 16%;
+  }
+  
+  .video-responsive iframe {
+    top: 0;
+    height: 65%;
+    width: 70%;
+    position: absolute;
+  }
+
+  .sections h1{
+      text-align: center;
+  }
+
+  .testimonials{
+    background-color: antiquewhite;
+    height: fit-content;
+    width: 70%;
+    /* margin-bottom: 5%; */
+    padding: 1%;
+    margin-left: 17%;
+  }
+
+  .videoTour p{
+    font-size: 40px;
+    color: red;
+    text-align: center;
+  }
+
+  .videoTour{
+    background-color: gray;
+    margin-top: 0%;
+    padding-bottom: 10%;
+  }
