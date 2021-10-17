@@ -1,0 +1,46 @@
+.Navbar
+{
+  display: flex;
+  width:100%;
+  align-items: center;
+  justify-content: center;
+  
+
+
+
+}
+
+
+.Navbar-item {
+
+padding: 20px;
+
+height: 70px;
+
+
+}
+
+.image-sv
+{
+  background-image: url("https://resource.rentcafe.com/image/upload/q_auto,f_auto,w_1550,h_400,c_lfill,g_auto/s3/2/7295/greatroom_ross_seven_spring%20(2).jpg");
+  width:100%;
+  height: 300px;
+
+  background-color: rgba(10,10,10,0.56);
+
+
+}
+
+.text
+{
+  text-align: center;
+  position: relative;
+  margin: auto;
+  top:20%;
+  padding: 20px;
+  height:200px;
+  width:400px;
+
+  background-color: rgba(10,10,10,0.56);
+  color: white
+}

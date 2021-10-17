@@ -1,20 +1,57 @@
-import './App.css';
-import React from 'react';
-import { BrowserRouter, Switch, Route } from "react-router-dom";
-import Navbar from './components/Navbar';
-import rentalHome from './pages/rentalHome';
-import videoTour from './pages/videoTour';
 
+
+import Main from "./pages/Main";
+import { Contactus } from "./pages/Contactus";
+import { Contact } from "./pages/Contact";
+import VideoTour from "./pages/videoTour";
+import FloorPlans from './pages/FloorPlans';
+
+
+
+
+import { BrowserRouter as Router,Switch,Route,Link  } from "react-router-dom";
 function App() {
   return (
-    <div className="App">
-      <BrowserRouter>
-      <Navbar/>
+    <div >
+
+
+      <Router>
+
+
         <Switch>
-          <Route component={rentalHome} path="/" exact /> 
-          <Route component = {videoTour} path="/" exact />
+          <Route  exact path="/services" render={()=>{
+            return (
+              <>
+              <Main/>
+
+              </>
+            )
+          }}>
+
+          </Route>
+          <Route exact path="/joinus">
+           <Contactus/>
+
+
+          </Route>
+          <Route exact path="/Contact">
+            <Contact/>
+          </Route>
+
+          <Route exact path="/vid">
+            <VideoTour/>
+          </Route>
+          <Route exact path="/">
+            <FloorPlans/>
+          </Route>
+
+
+
+
+
         </Switch>
-      </BrowserRouter>
+
+      </Router>
     </div>
   );
 }

@@ -1,0 +1,64 @@
+.checkbox label {
+  position: relative;
+  padding-left: 20px;
+}
+
+label {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+/* *, *::before, *::after {
+    box-sizing: border-box;
+} */
+label {
+  cursor: default;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: auto;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  float: left;
+  min-width: 10rem;
+  padding: 0.5rem 0;
+  margin: 0.125rem 0 0;
+  font-size: 1rem;
+  color: #2b2b2b;
+  text-align: left;
+  list-style: none;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 0;
+}
+.map-team-cards {
+  display: flex;
+  justify-content: space-evenly;
+  /* flex-wrap: inherit; */
+  flex-flow: wrap;
+  margin: 0px;
+}
+.card {
+  position: relative;
+
+  overflow: hidden;
+  border: 0;
+  /* border-radius: 1rem; */
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.6);
+  transition: 0.5s;
+}
+.card-image{
+    max-width: 18rem;
+    max-height: 18rem;
+}
+.card-image img{
+  width: -webkit-fill-available;
+  height: -webkit-fill-available;
+}
+.plan-options{
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}

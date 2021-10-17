@@ -1,0 +1,73 @@
+Property :
+
+  type: "High-Rise Studio",
+  bedrooms: "Studio",
+  bathrooms: "1 Bathroom",
+  unitSize: "495",
+  price: 1385,
+  tourlink: "",
+  image : "",
+  quantity: "",
+  max :"",
+  rented :{
+'roomno':'id',
+ },
+
+
+
+User/Applicant
+_id
+name,
+email,
+password,
+
+
+Township Admin Portal:
+name,
+email,
+password,
+contact
+
+
+worker:
+name,
+email,
+password,
+proffession,
+image,
+phone no,
+rating[]
+review[]{
+  name
+  comment
+}
+
+
+Order:
+type,
+sub-types,
+user_id,
+worker_id,
+date-time,
+rating,
+
+
+work:
+main work,
+Type{
+  subtype
+}
+
+
+Tenant
+userid: userId
+Adminpassword,
+email,
+name,
+Approved,
+Document,
+roomno,
+Number,
+StartDate,
+endDate,
+rentStatus,
