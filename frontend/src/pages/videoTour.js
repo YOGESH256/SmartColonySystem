@@ -3,10 +3,12 @@ import YoutubeEmbed from "../components/YoutubeEmbed";
 import Testimonial from "../components/Testimonial";
 import { Reviews } from "../Utils/Reviews";
 import '../styles/videoTour.css';
+import Navbar from '../components/Navbar';
 
 export default function videoTour() {
     return (
         <div className="videoTour">
+        <Navbar />
             <p>Video Tour</p>
             <div className="sections">
                 <h1>Hi-Rise 2 Bedroom 2 Bath</h1>

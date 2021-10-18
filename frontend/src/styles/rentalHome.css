@@ -3,7 +3,7 @@
 }
 
 .carausel{
-    background-color: gray;
+    /* background-color: gray; */
     margin: 0%;
     padding-top: 0%;
     height: 86vh;
@@ -59,6 +59,7 @@
 
 .row{
     margin-left: 3%;
+
 }
 
 .ammenities h1{
@@ -68,9 +69,10 @@
     color: rgba(0, 0, 0, 0.89);
 }
 .column{
-    width: 1300px;
+    width: 500px;
     display: block;
     height: auto;
+
 }
 
 .column > img{
@@ -117,7 +119,7 @@
 .testimonial{
     margin-top: 3%;
     background-image: url("../images/Test.png");
-    height: 600px; 
+    height: 600px;
     width: 100%;
     background-position: center;
     background-repeat: no-repeat;

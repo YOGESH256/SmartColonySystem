@@ -9,7 +9,7 @@ const Question = ({ title, info }) => {
         <h4 onClick={() => setExpanded(!expanded)} className='question-title'>
           {title}
         </h4>
-        <button className='btn' onClick={() => setExpanded(!expanded)}>
+        <button className='btnl' onClick={() => setExpanded(!expanded)}>
           {expanded ? <AiOutlineMinus /> : <AiOutlinePlus />}
         </button>
       </header>

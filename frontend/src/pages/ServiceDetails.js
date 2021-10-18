@@ -6,7 +6,7 @@ import Reviews from '../components/Reviews';
 
 export default function ServiceDetails() {
     return (
-        <div className="services">
+        <div className="container">
         <HowitWorks />
         <Reviews />
 

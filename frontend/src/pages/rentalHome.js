@@ -10,7 +10,7 @@ import flat from '../images/Building.PNG';
 const rentalHome = () => {
     return (
         <div>
-            {/* <div className="navbar"><Navbar /></div> */}
+             <Navbar />
             <div className="carausel"><Carousel slides={SliderData} /></div>
             <div className="floorPlans">
                 <h1>FLOOR PLANS</h1>
@@ -47,4 +47,3 @@ const rentalHome = () => {
 }
 
 export default rentalHome;
-

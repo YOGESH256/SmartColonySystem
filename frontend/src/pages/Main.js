@@ -1,5 +1,6 @@
 import React from 'react'
 import Navbar1 from '../components/Navbar1';
+import '../styles/Main.css';
 
 export default function Main() {
     return (
@@ -19,8 +20,8 @@ export default function Main() {
     </div>
     </div>
 
-    <div className="demotext d-flex p-2 bd-highlight hex" >
-               Services
+    <div className="demotext d-flex p-2 bd-highlight hex m-2" >
+               <br/>
         </div>
         <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 bac shadow-lg p-3 mb-5 bg-body rounded ml-10">
             <div className="col">
@@ -227,7 +228,7 @@ export default function Main() {
 
         </div>
 
-        <section className = "appliance testimonial">
+        <section className = "appliance ">
           <div>
 
             <h1 className = "sect-head">Customer Safety Is Our Priority</h1>
