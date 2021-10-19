@@ -1,0 +1,643 @@
+/* Styles for each RENTAL page separated by 5 lines
+R_Navbar(at 5), R_Home(at 108), FloorPlan(at 344), 
+Map(399), VedioTour(496), Header(523), Image(543), Amenities(566) */
+
+/* Rental Navbar  */
+ /*Desktop View*/
+.R_header {
+    display: flex;
+    /* background: linear-gradient(#6616fc, #f394d3); */
+    background-color: black;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 40px;
+    height: 80px;
+  }
+  .logo-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  .logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 25px;
+    color: tomato;
+  }
+  
+  .logo-container font{
+    color: white;
+  }
+  .logo {
+    width: 45px;
+    height: 45px;
+  }
+  .nav-options {
+    padding-left: 100px;
+    display: grid;
+    grid-template-columns: repeat(9, auto);
+    grid-gap: 50px;
+    list-style-type: none;
+  }
+  .mobile-option {
+    display: none;
+  }
+  .R_option a {
+    color: white;
+  }
+  .R_option :hover {
+    color: red;
+  }
+  .mobile-menu {
+    display: none;
+  }
+  @media (max-width: 648px) {
+    /*Mobile View */
+    .header {
+      padding: 0px 10px;
+    }
+    .logo {
+      width: 45px;
+      height: 45px;
+    }
+    .nav-options {
+      display: flex;
+      width: 100%;
+      height: fit-content;
+      position: absolute;
+      top: 80px;
+      left: -100%;
+      opacity: 0;
+      transition: all 0.5s ease;
+      flex-direction: column;
+      list-style-type: none;
+      grid-gap: 0px;
+    }
+    .nav-options.active {
+      background: #9899d1;
+      left: 0;
+      opacity: 1;
+      transition: all 0.5s ease;
+      z-index: 1;
+      align-content: center;
+      padding-left: 0px;
+    }
+  
+    .menu-icon {
+      width: 45px;
+      height: 45px;
+      color: white;
+    }
+    .R_option {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 4vw;
+      padding: 20px 0px;
+    }
+  }
+  .mobile-menu {
+    display: block;
+  }
+  
+ 
+
+
+/* Rental Home */
+  .R_home_carausel {
+    /* background-color: gray; */
+    margin: 0%;
+    padding-top: 0%;
+    height: 86vh;
+  }
+  .car{
+    height: 600px;
+    margin: 0;
+    display: grid;
+    grid-template-rows: 500px 100px;
+    grid-template-columns: 1fr 30px 30px 30px 30px 30px 1fr;
+    align-items: center;
+    justify-items: center;
+  }  
+  .car main#carousel {
+    grid-row: 1 / 2;
+    grid-column: 1 / 8;
+    width: 100vw;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transform-style: preserve-3d;
+    perspective: 600px;
+    --items: 5;
+    --middle: 3;
+    --position: 1;
+    pointer-events: none;
+    margin-top: 50px;
+  }
+  .car main div.item {
+    position: absolute;
+    width: 400px;
+    height: 500px;
+    background-color: coral;
+    --r: calc(var(--position) - var(--offset));
+    --abs: max(calc(var(--r) * -1), var(--r));
+    transition: all 0.25s linear;
+    transform: rotateY(calc(-10deg * var(--r)))
+    translateX(calc(-300px * var(--r)));
+    z-index: calc((var(--position) - var(--abs)));
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  /* width: 30%; */
+  }
+ .car main div.item:nth-of-type(1) {
+    --offset: 1;
+    background-color: #90f1ef;
+    background-image: url('https://images.unsplash.com/photo-1475189778702-5ec9941484ae?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1351&q=80');
+  }
+ .car main div.item:nth-of-type(2) {
+    --offset: 2;
+    background-color: #ff70a6;
+    background-image: url('https://images.unsplash.com/photo-1483729558449-99ef09a8c325?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80');
+  }
+ .car main div.item:nth-of-type(3) {
+    --offset: 3;
+    background-color: #ff9770;
+    background-image: url('https://images.unsplash.com/photo-1501446529957-6226bd447c46?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1489&q=80');
+  }
+ .car main div.item:nth-of-type(4) {
+    --offset: 4;
+    background-color: #ffd670;
+    background-image: url('https://images.unsplash.com/photo-1475189778702-5ec9941484ae?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1351&q=80');
+  }
+ .car main div.item:nth-of-type(5) {
+    --offset: 5;
+    background-color: #e9ff70;
+    background-image: url('https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80');
+  }
+  .car input:nth-of-type(1) {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+  }
+ .car input:nth-of-type(1):checked ~ main#carousel {
+    --position: 1;
+  }
+ .car input:nth-of-type(2) {
+    grid-column: 3 / 4;
+    grid-row: 2 / 3;
+  }
+ .car input:nth-of-type(2):checked ~ main#carousel {
+    --position: 2;
+  }
+ .car input:nth-of-type(3) {
+    grid-column: 4 /5;
+    grid-row: 2 / 3;
+  }
+ .car input:nth-of-type(3):checked ~ main#carousel {
+    --position: 3;
+  }
+ .car input:nth-of-type(4) {
+    grid-column: 5 / 6;
+    grid-row: 2 / 3;
+  }
+ .car input:nth-of-type(4):checked ~ main#carousel {
+    --position: 4;
+  }
+ .car input:nth-of-type(5) {
+    grid-column: 6 / 7;
+    grid-row: 2 / 3;
+  }
+ .car input:nth-of-type(5):checked ~ main#carousel {
+    --position: 5;
+  }
+
+
+  .R_home_floorPlans {
+    padding-top: 5%;
+  }
+      .R_home_floorPlans h1 {
+      text-align: center;
+      font-size: 50px;
+      color: rgba(0, 0, 0, 0.89);
+      }
+      .R_home_floorPlans h2 {
+      text-align: center;
+      color: rgba(0, 217, 255, 0.808);
+      }
+      .R_home_floorPlans p {
+      font-family: "Times New Roman";
+      font-weight: 100;
+      text-align: center;
+      padding-left: 7%;
+      padding-right: 7%;
+      font-size: 30px;
+      }
+      .R_home_floorPlans button {
+      border: none;
+      color: #008cba;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: flex;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      -webkit-transition-duration: 0.4s; /* Safari */
+      transition-duration: 0.4s;
+      margin-left: 42%;
+      border: 2px solid #008cba;
+      }
+          .R_home_floorPlans button:hover {
+          background-color: #008cba; /* Green */
+          color: white;
+          }
+  
+  .R_home_ammenities {
+    padding-top: 5%;
+  }
+  .R_home_ammenities h1 {
+      text-align: center;
+      margin-bottom: 5%;
+      font-size: 50px;
+      color: rgba(0, 0, 0, 0.89);
+  }
+  .R_home_ammenities .row {
+    margin: 0 50px 0 50px;
+    justify-content: center;
+  }
+      .R_home_ammenities .row .column {
+      width: fit-content;
+      display: flex;
+      height: auto;
+      }
+      .R_home_ammenities .row .column > img {
+      float: left;
+      width: 400px;
+      height: 200px;
+      margin: 5px 8px;
+      }
+  .R_home_ammenities button {
+    border: none;
+    color: #008cba;
+    background-color: rgba(128, 128, 128, 0.308);
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    margin-left: 42%;
+    border: 2px solid #008cba;
+    margin-top: 5%;
+  }
+      .R_home_ammenities button:hover {
+      background-color: #008cba; /* Green */
+      color: white;
+      }
+  
+  .R_home_testimonial {
+      margin-top: 3%;
+      background-image: url("../images/Test.png");
+      height: 600px;
+      width: 100%;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      padding-top: 150px;
+  }
+      .R_home_testimonial h1 {
+      text-align: center;
+      color: rgba(0, 0, 0, 0.89);
+      font-family: "Montserrat","Montserrat Local Fallback",sans-serif;
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.8;
+      }
+      .R_home_testimonial p {
+      text-align: center;
+      font-size: 35px;
+      color: #008cba;
+      }
+      .R_home_testimonial .R_home_review {
+      width: 1000px;
+      height: auto;
+      margin: 0 auto;
+      /* margin-top: 10%; */
+      padding: 10px;
+      position: relative;
+      /* background-color: rgba(128, 128, 128, 0.438); */
+      background-color: antiquewhite;
+      }
+  
+
+
+
+
+
+  /* Floor Plan Section */
+ /* .content-width{
+    padding-left: 10vw;
+    padding-right: 10vw;
+  } */
+  .plan-options{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+  }
+  .map-team-cards {
+    display: flex;
+    justify-content: space-evenly;
+    /* flex-wrap: inherit; */
+    flex-flow: wrap;
+    margin: 50px 0px 0 0;
+  }
+
+  /* Floor Card Section */
+  .floor-card {
+    position: relative;
+    /* overflow: hidden; */
+    margin:0px 10px 5px 10px;
+    border: 0;
+    box-shadow: 0px 9px 12px rgb(0 0 0 / 60%);
+    transition: 0.5s;
+    width: 22.25rem!important;
+    height: fit-content;
+  }
+  .floor-card .card-header{
+    padding: 24px 20px 0px 20px;
+  }
+  .floor-card .img-container{
+    padding:0px 16px;
+    height: 16.25rem;
+  }
+  .floor-card .img-container .card-img{
+    padding: 0px 4px;
+    justify-self: center;
+    height: -webkit-fill-available;
+    width: -webkit-fill-available;
+} 
+  .floor-card .card-img img{
+    padding:0px 4px;
+  }
+  .floor-card .card-body{
+    padding: 0px 20px;
+  }
+  .floor-card .card-body .text-muted{
+  color:rgb(0 0 0 / 55%)
+  }
+  
+
+
+
+/* Map Page */
+  .ko {
+    height: 200px;
+    width: 100%;
+    margin: auto;
+  }
+  .koo {
+    height: 400px;
+    margin: auto;
+  }
+  .bounce {
+    display: inline-block;
+    position: relative;
+    -moz-animation: bounce 0.5s infinite linear;
+    -o-animation: bounce 0.5s infinite linear;
+    -webkit-animation: bounce 0.5s infinite linear;
+    animation: bounce 0.5s infinite linear;
+    colr: 000;
+  }
+  @-webkit-keyframes bounce {
+    0% {
+      top: 0;
+    }
+    50% {
+      top: -0.2em;
+    }
+    70% {
+      top: -0.3em;
+    }
+    100% {
+      top: 0;
+    }
+  }
+  @-moz-keyframes bounce {
+    0% {
+      top: 0;
+    }
+    50% {
+      top: -0.2em;
+    }
+    70% {
+      top: -0.3em;
+    }
+    100% {
+      top: 0;
+    }
+  }
+  @-o-keyframes bounce {
+    0% {
+      top: 0;
+    }
+    50% {
+      top: -0.2em;
+    }
+    70% {
+      top: -0.3em;
+    }
+    100% {
+      top: 0;
+    }
+  }
+  @-ms-keyframes bounce {
+    0% {
+      top: 0;
+    }
+    50% {
+      top: -0.2em;
+    }
+    70% {
+      top: -0.3em;
+    }
+    100% {
+      top: 0;
+    }
+  }
+  @keyframes bounce {
+    0% {
+      top: 0;
+    }
+    50% {
+      top: -0.2em;
+    }
+    70% {
+      top: -0.3em;
+    }
+    100% {
+      top: 0;
+    }
+  }
+  .classH {
+    margin-bottom: 80px;
+    margin-right: 50px;
+  }
+  
+
+
+
+  /* Video Tour */
+  .videoTour {
+    background-color: gray;
+    margin-top: 0%;
+    padding-bottom: 10%;
+  }
+  .videoTour p {
+    font-size: 40px;
+    color: red;
+    text-align: center;
+  }
+  .videoTour .video-responsive iframe {
+    height: 25rem;
+    width: 65%;
+    position: relative;
+  }
+  .videoTour .sections h1 {
+    margin-top: 50px;  
+    text-align: center;
+  }
+  .videoTour .testimonials {
+    background-color: antiquewhite;
+    margin-left:auto;
+    margin-right:auto;
+    height: fit-content;
+    width: 70%;
+    padding: 1%;
+  }
+  
+
+
+
+  /* Header Component */
+.Ins_Navbar{
+  display: flex;
+  width:100%;
+  align-items: center;
+  justify-content: center;
+}
+.Ins_Navbar-item {
+padding: 20px;
+height: 70px;
+}
+
+
+
+
+/* Image Component */
+.Ins_image-sv{
+  background-image: url("https://resource.rentcafe.com/image/upload/q_auto,f_auto,w_1550,h_400,c_lfill,g_auto/s3/2/7295/greatroom_ross_seven_spring%20(2).jpg");
+  width:100%;
+  height: 300px;
+  background-color: rgba(10,10,10,0.56);
+}
+.Ins_text{
+  text-align: center;
+  position: relative;
+  margin: auto;
+  top:20%;
+  padding: 20px;
+  height:200px;
+  width:400px;
+  background-color: rgba(10,10,10,0.56);
+  color: white
+}
+
+
+
+
+
+/* Amenities */
+/* Signup styles */
+.Amen_signup {
+  width: 100%;
+  min-height: calc(100vh - 58px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.Amen_signup .Amen_mainContainer {
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 70px 0;
+}
+.Amen_signup .Amen_output {
+  margin: 60px 0 0 0;
+  padding: 30px;
+  width: 100%;
+  min-height: 400px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0px 3px 12px rgb(160, 181, 238);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+/* Step Indicator Styles */
+.Amen_stepIndicator {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.Amen_stepIndicator hr {
+  width: 160px;
+  background: #fafafa;
+  height: 2px;
+  border-width: 0;
+  margin: 0 16px;
+}
+.Amen_stepIndicator hr:last-of-type {
+  display: none;
+}
+.Amen_stepIndicator a {
+  text-decoration: none;
+  width: 300px;
+  height: 50px;
+  color: lightblue;
+  box-shadow: 0px 3px 12px rgb(160, 181, 238);
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* cursor: pointer; */
+  cursor: default;
+  user-select: none;
+  position: relative;
+  font-weight: bold;
+  font-size: 22px;
+  transition: all 600ms ease-in-out;
+}
+.Amen_stepIndicator .activeLink {
+  background: yellow;
+  color: #fff;
+}
+/* Button Container Styles */
+.Amen_btnContainer {
+  /* width: 100%; */
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.btnContainer a {
+  text-decoration: none;
+  display: inline-block;
+  margin-left: 10px;
+  color: #000;
+}

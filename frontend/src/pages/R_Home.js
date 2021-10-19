@@ -1,18 +1,15 @@
 import React from 'react';
-import Navbar from '../components/Navbar';
 import Carousel from '../components/Carousel';
 import Testimonial from '../components/Testimonial';
 import { Reviews } from '../Utils/Reviews';
 import { SliderData } from '../Utils/SliderData';
-import '../styles/rentalHome.css';
 import flat from '../images/Building.PNG';
 
-const rentalHome = () => {
+const R_Home = () => {
     return (
-        <div>
-             <Navbar />
-            <div className="carausel"><Carousel slides={SliderData} /></div>
-            <div className="floorPlans">
+        <div>R Home
+            <div className="R_home_carausel"><Carousel slides={SliderData} /></div>
+            <div className="R_home_floorPlans">
                 <h1>FLOOR PLANS</h1>
                 <h2>APARTMENTS THAT ARE TAILORED TO YOU</h2>
                 <p>Looking for an apartment that aligns with your unique style? Look no further! Our apartments
@@ -20,9 +17,9 @@ const rentalHome = () => {
                     and welcoming atmosphere! Check out our
                     available apartments with detailed information about the units, amenities and more.
                 </p>
-                <button className="button">View Floor Plans</button>
+                <button className="R_home_button">View Floor Plans</button>
             </div>
-            <div className="ammenities">
+            <div className="R_home_ammenities">
                 <h1>SOMETHING FOR EVERYONE</h1>
                 <div class="row">
                     <div class="column">
@@ -35,15 +32,15 @@ const rentalHome = () => {
                         <img src={flat} alt="flat3" />
                     </div>
                 </div>
-                <button className="button">View All Our Ammenities</button>
+                <button className="R_home_button">View All Our Ammenities</button>
             </div>
-            <div className="testimonial">
-                <div className="review">
-                    <div className="comments"><Testimonial slides={Reviews} /></div>
+            <div className="R_home_testimonial">
+                <div className="R_home_review">
+                    <div className="R_home_comments"><Testimonial slides={Reviews} /></div>
                 </div>
             </div>
         </div>
     )
 }
 
-export default rentalHome;
+export default R_Home;

@@ -1,19 +1,13 @@
-import React from 'react'
-import './Styles.css';
-import { LinkContainer } from 'react-router-bootstrap'
-import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap'
+import React from "react";
 
 const Image = () => {
   return (
-<>
-<div className = "image-sv">
-<div className = "text">
- <h1> SEVEN SPRINGS APARTMENT </h1>
-</div>
-</div>
+      <div className="Ins_image-sv">
+        <div className="Ins_text">
+          <h1> SEVEN SPRINGS APARTMENT </h1>
+        </div>
+      </div>
+  );
+};
 
-</>
-  )
-}
-
-export default Image
+export default Image;
