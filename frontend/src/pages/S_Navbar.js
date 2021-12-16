@@ -15,9 +15,11 @@ const R_Navbar = () => {
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
+
+
   return (
     <div className="S_cntct">
-             <div>
+             <div >
           <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
               <Link to="" className="logo-container">
@@ -47,7 +49,7 @@ const R_Navbar = () => {
                   </li>
                   <li className="nav-item home">
                     <Link className="nav-link active"
-                    aria-current="page" to={`${url}/joinus`}>Accordian</Link>
+                    aria-current="page" to={`${url}/joinus`}>FAQ's</Link>
                   </li>
                   <li className="nav-item home">
                     <Link className="nav-link active"

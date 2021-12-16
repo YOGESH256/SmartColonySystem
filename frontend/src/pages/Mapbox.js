@@ -87,9 +87,8 @@ const Mapbox = () => {
 
   return (
     <>
-    {/* <Header />
-    <Image /> */}
       <div className="container classH"></div>
+      <h1 style={{display:"flex", justifyContent:"center"}}>Mapbox</h1>
 
       <div className="container pt-2 pb-5">
         <form onSubmit={handleChange}>
@@ -114,7 +113,7 @@ const Mapbox = () => {
         </form>
       </div>
 
-      <div className="container koo">
+      <div className="container koo" style={{marginBottom:"50px"}}>
         <ReactMapGL
           mapStyle="mapbox://styles/yogeshkhatri/cks1qh67i2i9017lflkd0g3t6"
           mapboxApiAccessToken="pk.eyJ1IjoieW9nZXNoa2hhdHJpIiwiYSI6ImNrczFwb3VpZzF3MngycHBzdnVyY2JneGoifQ.5r167zpS6Z-kK7Y-xobAGA"

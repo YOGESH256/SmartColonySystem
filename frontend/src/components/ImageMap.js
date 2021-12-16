@@ -3,6 +3,11 @@ const imgs = {
     f2: require('../images/floorPlan/fl-p2.jpeg').default,
     f3: require('../images/floorPlan/fl-p3.jpeg').default,
     f4: require('../images/floorPlan/fl-p4.png').default,
+    car1: require('../images/R_Home/car1.jfif').default,
+    car2: require('../images/R_Home/car2.jfif').default,
+    car3: require('../images/R_Home/car3.jfif').default,
+    car4: require('../images/R_Home/car4.jfif').default,
+    car5: require('../images/R_Home/car5.jfif').default,
 }
 const homeImg = {
     carousel: require('../images/S_Home/back1.jpg').default,

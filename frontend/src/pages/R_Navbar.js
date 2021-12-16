@@ -36,13 +36,13 @@ const R_Navbar = () => {
               <Link to={`${url}/floorplans`}>Floor Plans</Link>
             </li>
             <li className="R_option" onClick={closeMobileMenu}>
+              <Link to={`${url}/vediotour`}>Vedio Tour</Link>
+            </li>
+            <li className="R_option" onClick={closeMobileMenu}>
               <Link to={`${url}/photos`}>Photos+Map</Link>
             </li>
             <li className="R_option" onClick={closeMobileMenu}>
               <Link to={`${url}/amenities`}>Amenities</Link>
-            </li>
-            <li className="R_option" onClick={closeMobileMenu}>
-              <Link to={`${url}/vediotour`}>Vedio Tour</Link>
             </li>
             <li className="R_option" onClick={closeMobileMenu}>
               <Link to={`${url}/rentroom`}>Brochure</Link>
@@ -66,7 +66,8 @@ const R_Navbar = () => {
           <Route path="/rental/home" component={R_Home} />
           <Route path="/rental/floorplans" component={FloorPlans} />
           <Route path="/rental/photos" >
-              Photos<br />
+      <h1 style={{display:"flex", justifyContent:"center"}}>Photos</h1>
+              <br />
               <Mapbox />
           </Route>
           <Route path="/rental/amenities" component={Amenities} />

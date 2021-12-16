@@ -156,28 +156,34 @@ Map(399), VedioTour(496), Header(523), Image(543), Amenities(566) */
   }
  .car main div.item:nth-of-type(1) {
     --offset: 1;
-    background-color: #90f1ef;
-    background-image: url('https://images.unsplash.com/photo-1475189778702-5ec9941484ae?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1351&q=80');
+    background: url('../images/R_Home/car1.jfif');
+    background-repeat: no-repeat;
+    background-size: 400px 500px;
+
   }
  .car main div.item:nth-of-type(2) {
     --offset: 2;
-    background-color: #ff70a6;
-    background-image: url('https://images.unsplash.com/photo-1483729558449-99ef09a8c325?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80');
+    background-image: url('../images/R_Home/car2.jfif');
+    background-repeat: no-repeat;
+    background-size: 400px 500px;
   }
  .car main div.item:nth-of-type(3) {
     --offset: 3;
-    background-color: #ff9770;
-    background-image: url('https://images.unsplash.com/photo-1501446529957-6226bd447c46?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1489&q=80');
+    background-image: url('../images/R_Home/car3.jfif');
+    background-repeat: no-repeat;
+    background-size: 400px 500px;
   }
  .car main div.item:nth-of-type(4) {
     --offset: 4;
-    background-color: #ffd670;
-    background-image: url('https://images.unsplash.com/photo-1475189778702-5ec9941484ae?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1351&q=80');
+    background-image: url('../images/R_Home/car4.jfif') ;
+    background-repeat: no-repeat;
+    background-size: 400px 500px;
   }
  .car main div.item:nth-of-type(5) {
     --offset: 5;
-    background-color: #e9ff70;
-    background-image: url('https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80');
+    background-image: url('../images/R_Home/car5.jfif');
+    background-repeat: no-repeat;
+    background-size: 400px 500px;
   }
   .car input:nth-of-type(1) {
     grid-column: 2 / 3;
@@ -214,7 +220,6 @@ Map(399), VedioTour(496), Header(523), Image(543), Amenities(566) */
  .car input:nth-of-type(5):checked ~ main#carousel {
     --position: 5;
   }
-
 
   .R_home_floorPlans {
     padding-top: 5%;
@@ -641,3 +646,5 @@ height: 70px;
   margin-left: 10px;
   color: #000;
 }
+
+/* Login/Admin button */

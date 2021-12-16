@@ -51,7 +51,7 @@ const Carousel = ({ slides }) => {
 
     return (
         <div className="car">
-            <input type="radio" name="position" checked />
+            <input type="radio" name="position" />
             <input type="radio" name="position" />
             <input type="radio" name="position" />
             <input type="radio" name="position" />

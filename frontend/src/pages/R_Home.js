@@ -7,7 +7,9 @@ import flat from '../images/Building.PNG';
 
 const R_Home = () => {
     return (
-        <div>R Home
+        <div>
+                  <h1 style={{display:"flex", justifyContent:"center"}}>Rental home</h1>
+
             <div className="R_home_carausel"><Carousel slides={SliderData} /></div>
             <div className="R_home_floorPlans">
                 <h1>FLOOR PLANS</h1>

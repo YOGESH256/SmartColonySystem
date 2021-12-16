@@ -34,7 +34,7 @@ const Amenities = () => {
                 value="true"
                 className="Amen_btnContainer space-x-4"
               >
-                Personal Amenities
+                Community Amenities
               </Button>
               <hr style={{border: "1px solid red"}} />
               <Button
@@ -44,7 +44,7 @@ const Amenities = () => {
                 value="false"
                 className="AmenbtnContainer space-x-4"
               >
-                Community Amenities.
+                Personal Amenities.
               </Button>
 
               <hr />

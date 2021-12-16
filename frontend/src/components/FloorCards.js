@@ -34,7 +34,7 @@ const FloorCard = (props) => {
               fontWeight: "700 !important",
             }}
           >
-            ${props.price}
+            &#8377;{props.price}
             <small className="text-muted">/mo</small>
           </p>
         </div>

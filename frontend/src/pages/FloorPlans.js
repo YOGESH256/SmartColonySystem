@@ -53,7 +53,7 @@ export const Plans=() =>{
           Bedrooms:
           <Select
             // defaultValue={(state.map((info) =>{ return(info.bedrooms)}))}
-            defaultValue={{ value: '0', label: 'Studio' }}
+            defaultValue=""
             isMulti
             name="colors"
             options={opBed}
@@ -109,7 +109,7 @@ export const Plans=() =>{
                   class="input-group-text"
                   id="validationTooltipUsernamePrepend"
                 >
-                  $
+                  &#8377;
                 </span>
               </div>
               <input
@@ -244,6 +244,7 @@ const FloorPlans = () => {
       const io = await floorDetail();
       console.log(io);
       setRemoteDetls(io.data);
+      console.log(io.data)
     } catch (e) {
       console.log(e);
     }
@@ -251,7 +252,7 @@ const FloorPlans = () => {
 
   return (
     <Container className="content-width">
-      <h1>Floor Plans</h1>
+      <h1 style={{display:"flex", justifyContent:"center"}}>Floor Plans</h1>
         <Plans />
     </Container>
   );
