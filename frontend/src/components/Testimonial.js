@@ -71,13 +71,16 @@ const Testimonial = ({ slides }) => {
                             >
                                 {index === current && (
                                     <>
-                                        <h2 className='image'
-                                            style={
-                                                {
+                                        <h2 style={{
                                                     textAlign: "center",
-                                                    color: "black"
-                                                }
-                                            }>"{slide.desc}"</h2>
+                                                    color: "black",
+                                                    fontFamily: ["Montserrat","Montserrat Local Fallback","sans-serif"],
+                                                    fontSize: "1rem",
+                                                    fontWeight: "400",
+                                                    lineHeight: "1.8",
+                                                }}>
+                                            "{slide.desc}"
+                                        </h2>
                                         <p style={
                                             {
                                                 textAlign: "right",

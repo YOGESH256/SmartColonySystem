@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { SliderData } from '../Utils/SliderData.js';
-import '../styles/Carousel.css'
+// import '../styles/Carousel.css'
 import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from 'react-icons/fa';
 
 // const Carousel = ({ slides }) => {
@@ -51,7 +51,7 @@ const Carousel = ({ slides }) => {
 
     return (
         <div className="car">
-            <input type="radio" name="position" checked />
+            <input type="radio" name="position" />
             <input type="radio" name="position" />
             <input type="radio" name="position" />
             <input type="radio" name="position" />

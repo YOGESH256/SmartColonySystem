@@ -1,8 +1,8 @@
 import React from 'react'
-import './Styles.css';
+// import './Styles.css';
 import { LinkContainer } from 'react-router-bootstrap'
 import { Navbar, Nav, Container, NavDropdown , Carousel } from 'react-bootstrap'
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 const AmenInside2 = () => {
   return (
 <>

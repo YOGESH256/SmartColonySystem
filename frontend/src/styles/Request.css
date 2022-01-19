@@ -1,0 +1,31 @@
+.main32{
+    margin-top: 85px;
+    margin-left: 25px;
+    margin-right: 25px;
+    justify-content: space-between;
+    
+}
+.rahulya{
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+.service{
+    margin-left: 500px;
+    margin-top: 20px;
+    
+    
+}
+.batu{
+    color: red;
+    background-color: white;
+    font-size: 28px;
+    border: 10px solid;
+}
+.batu2{
+    margin-left: 80px;
+    font-size: 28px;
+    color: seagreen;
+    background-color: white;
+    border: 10px solid;
+    text-decoration: dotted;
+}

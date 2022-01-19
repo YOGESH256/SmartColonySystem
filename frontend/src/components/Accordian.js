@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import data from '../Utils/faq'
 import SingleQuestion from './Question'
-import '../styles/faq.css'
+// import '../not to use/faq.css'
 
 const Accordian = () => {
   const [questions, setQuestions] = useState(data)
