@@ -1,6 +1,6 @@
 import express from 'express'
 const router = express.Router()
-import {getPropertyData , addPropertyData ,addReviewData , login , register , getUser , getFiles , UploadFile , documentData} from '../controllers/Controller.js'
+import {getPropertyData , addPropertyData ,addReviewData , login , register , getUser , getFiles , UploadFile , documentData , getAllRequest} from '../controllers/Controller.js'
 import multer from 'multer'
 
 
@@ -41,6 +41,7 @@ router.post('/addreview' , addReviewData);
 router.post('/login' , login)
 router.post('/register' , register)
 router.get('/user' , getUser)
+router.get('/getAllRequest' , getAllRequest)
 router.get("/api/getFiles",)
 router.post("/api/uploadFile" , upload.single("myFile"), UploadFile )
 

@@ -39,6 +39,10 @@ const propertySchema = new mongoose.Schema({
     required: true
 
   },
+  roomnos: {
+    type: Array,
+    default: [401 , 402 , 403 , 404]
+  }
 
 
 

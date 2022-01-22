@@ -11,6 +11,7 @@ import Comment from './pages/Comment'
 import Review from './pages/Review'
 import Profile from './pages/Profile'
 import Request from './pages/Request'
+import TenantRequest from './pages/TenantRequest'
 
 import './App.css';
 import './App.css';
@@ -32,7 +33,7 @@ function App() {
             <Admin />
           </Route>
           <Route path="/rental">
-            <Rental />  
+            <Rental />
           </Route>
           <Route path="/service">
             <Services />
@@ -42,7 +43,7 @@ function App() {
           </Route>
          <Route path="/cart">
             <Cart />
-          </Route> 
+          </Route>
          <Route path="/comments">
            <Comment/>
          </Route>
@@ -55,7 +56,10 @@ function App() {
          <Route path="/request">
            <Request/>
          </Route>
-         
+         <Route path="/tenantrequest">
+           <TenantRequest/>
+         </Route>
+
         </Switch>
       </div>
     </div>

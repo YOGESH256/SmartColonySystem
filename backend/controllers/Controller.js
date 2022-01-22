@@ -131,6 +131,7 @@ const documentData = async(req , res) => {
 
  try {
    const request = new Request({
+     userId: "61b397610a6f2a532ebe2f1a",
      aadharCard: req.body.aadharCard,
      panCard: req.body.panCard,
      extraDocument: req.body.extraDocument,
@@ -163,10 +164,39 @@ const documentData = async(req , res) => {
 }
 
 
+const getAllRequest = async(req , res) => {
+
+
+   try {
+
+   const request = await Request.find({}).populate("propertyId")
+
+   res.status(200).json({
+     status: "success",
+     request,
+   });
+
+
+   } catch (error) {
+
+     console.log(error);
+     res.json({
+       error,
+     });
+   }
+
+}
 
 
 
 
 
 
-export  {getPropertyData , addPropertyData , addReviewData , login , register , getUser , getFiles ,UploadFile  , documentData};
+
+
+
+
+
+
+
+export  {getPropertyData , addPropertyData , addReviewData , login , register , getUser , getFiles ,UploadFile  , documentData , getAllRequest};
