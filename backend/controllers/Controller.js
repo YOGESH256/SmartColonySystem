@@ -188,6 +188,75 @@ const getAllRequest = async(req , res) => {
 }
 
 
+const tenantData = async(req , res) => {
+
+  console.log(req.body);
+
+  try {
+    const tenant = new Tenant({
+      name: req.body.name,
+      email: req.body.email,
+      aadharCard: req.body.aadharCard,
+      panCard: req.body.panCard,
+      extraDocument: req.body.extraDocument,
+      contactNo: req.body.contactNo,
+      StartDate: req.body.startDate,
+      EndDate: req.body.endDate,
+      PropertyId: req.body.propertyId,
+      roomno: req.body.roomno,
+      servicespassword:req.body.name + req.body.contactNo,
+      rentStatus: 0,
+    })
+
+
+
+    await tenant.save();
+
+    res.status(200).json({
+      status: "success",
+      message: "Request created successfully!!",
+    });
+
+  } catch (error) {
+
+    console.log(error);
+    res.json({
+      error,
+    });
+  }
+
+
+
+}
+
+
+const statusData = async(req , res) => {
+
+  console.log(req.body);
+  const {id , status} = req.body;
+
+  try {
+const request = await Request.findById(id);
+
+request.status = status;
+await request.save();
+
+
+  } catch (error) {
+
+    console.log(error);
+    res.json({
+      error,
+    });
+  }
+
+
+
+
+
+
+
+}
 
 
 
@@ -198,5 +267,4 @@ const getAllRequest = async(req , res) => {
 
 
 
-
-export  {getPropertyData , addPropertyData , addReviewData , login , register , getUser , getFiles ,UploadFile  , documentData , getAllRequest};
+export  {getPropertyData , addPropertyData , addReviewData , login , register , getUser , getFiles ,UploadFile  , documentData , getAllRequest , tenantData , statusData};

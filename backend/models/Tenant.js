@@ -25,12 +25,10 @@ const review = mongoose.model('review', reviewSchema);
 const tenantSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: true
   },
 
   email: {
     type: String,
-    required: true
   },
   servicespassword: {
     type: String,
@@ -48,6 +46,19 @@ StartDate: {
     type: Date,
     default: Date.now
   },
+  panCard: {
+    type: String,
+    required: true
+  },
+  aadharCard: {
+    type: String,
+    required: true
+  },
+  extraDocument: {
+    type: String,
+    required: true
+  },
+
   // rent pending / no of months
   rentStatus : {
     type : Number,

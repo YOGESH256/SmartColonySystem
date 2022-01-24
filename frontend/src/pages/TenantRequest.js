@@ -8,6 +8,7 @@ export default function Request() {
 
   const [getAllRequest , setAllRequest] = useState();
   const [reques , setReques] = useState();
+  const [roomno , setRoomno] = useState(0);
 
 
 
@@ -24,9 +25,83 @@ export default function Request() {
 
 
 
-const submitHandler = (e) => {
+
+const submitHandler = async(e) => {
   e.preventDefault();
   console.log(e.target.id);
+const nf = getAllRequest.filter(req => req._id === e.target.id);
+
+
+setReques(nf[0]);
+
+
+
+
+
+        try {
+
+          if(roomno == 0)
+          {
+            alert("Please Enter Room no ")
+            return;
+
+          }
+
+          const io = {
+            aadharCard : nf[0].aadharCard,
+            panCard : nf[0].panCard,
+            extraDocument: nf[0].extraDocument,
+            contactNo: nf[0].ContactNo,
+            endDate: nf[0].EndDate,
+            startDate: nf[0].StartDate,
+            propertyId:nf[0].propertyId._id,
+            roomno: roomno,
+            name: "Ram",
+            email: "Sharma123@gmail.com",
+          }
+
+          setRoomno(0);
+          const {data} =  await axios.post('http://127.0.0.1:4000/tenant/register' , io);
+
+          const jk = {
+            id: nf[0]._id,
+            status: "accepted"
+          }
+          await axios.post('http://127.0.0.1:4000/tenant/status' , jk );
+
+
+
+
+
+
+        } catch (error) {
+        console.error(error)
+
+        }
+
+
+
+
+
+
+
+}
+
+
+const rejectHandler = async(id) => {
+
+            if(roomno !== 0)
+            {
+              alert("Please Enter Room no ")
+              return;
+
+            }
+
+            const jk = {
+              id: id,
+              status: "rejected"
+            }
+            await axios.post('http://127.0.0.1:4000/tenant/status' , jk );
 
 
 
@@ -56,10 +131,10 @@ const submitHandler = (e) => {
               <p><a href={`http://localhost:4000/files/${request.extraDocument}`} class="">extraDocument</a></p>
 
 
-<select class="form-select form-select-sm mb-3 " aria-label=".form-select-lg example">
+<select class="form-select form-select-sm mb-3 " aria-label=".form-select-lg example" onChange = {e => setRoomno(e.target.value)} required>
   <option selected>Open this select menu</option>
   {request.propertyId?.roomnos?.map((room) => (
-    <option value={room}>{room}</option>
+    <option value={room} >{room}</option>
   ))
 
   }
@@ -70,8 +145,8 @@ const submitHandler = (e) => {
 <br/>
 
 
-              <button href="#" class="p-2 m-2 btn-primary">Reject</button>
-              <button href="#"  type = "submit"    class="p-2 m-2 btn-danger">Accept</button>
+              <button href="#" type = "button" onClick = {() => rejectHandler(request._id)} class="p-2 m-2 btn-primary">Reject</button>
+              <button href="#"  type = "submit"  class="p-2 m-2 btn-danger">Accept </button>
             {  /* <a href="#" class="batu2 btn-primary">Give Timing</a> */}
             </div>
           </div>
