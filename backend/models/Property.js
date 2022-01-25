@@ -40,7 +40,7 @@ const propertySchema = new mongoose.Schema({
 
   },
   roomnos: {
-    type: Array,
+    type: [Number],
     default: [401 , 402 , 403 , 404]
   }
 

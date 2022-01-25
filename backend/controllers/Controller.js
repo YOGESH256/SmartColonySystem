@@ -126,12 +126,11 @@ const getFiles =  async (req, res) => {
 
 const documentData = async(req , res) => {
 
-  console.log(req.body);
 
 
  try {
    const request = new Request({
-     userId: "61b397610a6f2a532ebe2f1a",
+     userId: req.user.id,
      aadharCard: req.body.aadharCard,
      panCard: req.body.panCard,
      extraDocument: req.body.extraDocument,
@@ -141,7 +140,7 @@ const documentData = async(req , res) => {
      propertyId: req.body.propertyId,
    })
 
-   console.log(request);
+
 
    await request.save();
 
@@ -171,6 +170,8 @@ const getAllRequest = async(req , res) => {
 
    const request = await Request.find({}).populate("propertyId")
 
+
+
    res.status(200).json({
      status: "success",
      request,
@@ -190,10 +191,11 @@ const getAllRequest = async(req , res) => {
 
 const tenantData = async(req , res) => {
 
-  console.log(req.body);
+
 
   try {
     const tenant = new Tenant({
+      userId: req.user.id,
       name: req.body.name,
       email: req.body.email,
       aadharCard: req.body.aadharCard,
@@ -211,6 +213,23 @@ const tenantData = async(req , res) => {
 
 
     await tenant.save();
+
+
+
+const property = await Property.findById(req.body.propertyId);
+
+const io = property.roomnos.filter(hj => hj != req.body.roomno );
+
+
+property.roomnos = io;
+
+await property.save();
+
+
+
+
+
+
 
     res.status(200).json({
       status: "success",

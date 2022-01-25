@@ -30,6 +30,12 @@ const tenantSchema = new mongoose.Schema({
   email: {
     type: String,
   },
+  userId: {
+    type:mongoose.Schema.Types.ObjectId,
+
+    ref:'userId',
+  },
+
   servicespassword: {
     type: String,
     required: true

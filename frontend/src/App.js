@@ -12,6 +12,7 @@ import Review from './pages/Review'
 import Profile from './pages/Profile'
 import Request from './pages/Request'
 import TenantRequest from './pages/TenantRequest'
+import Login from './pages/Login'
 
 import './App.css';
 import './App.css';
@@ -58,6 +59,9 @@ function App() {
          </Route>
          <Route path="/tenantrequest">
            <TenantRequest/>
+         </Route>
+         <Route path="/login">
+           <Login/>
          </Route>
 
         </Switch>

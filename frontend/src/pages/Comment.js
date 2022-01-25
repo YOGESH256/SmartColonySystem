@@ -2,11 +2,11 @@ import React from 'react'
 import "../styles/Comment.css";
 export default function Comment() {
     return (
-        
+
         <div className="container mt-3 d-flex justify-content-center">
         <div className="row d-flex justify-content-center">
                     <div className="button-add">
-                    <button type="button" class="btn btn-primary button-comment">+</button>
+                    <a href = "/review"><button type="button"  class="btn btn-primary button-comment">+</button></a>
                     </div>
             <div className="col-md-8">
                 <div className="text-left">
@@ -76,8 +76,8 @@ export default function Comment() {
         </div>
     </div>
 
-                    
-    
-    
+
+
+
     )
 }

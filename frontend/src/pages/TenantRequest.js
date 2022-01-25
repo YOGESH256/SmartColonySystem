@@ -12,15 +12,28 @@ export default function Request() {
 
 
 
-  useEffect(async() => {
 
+  const updateInvoiceData = async () => {
     const result = await axios.get('http://localhost:4000/getAllRequest').catch(e => console.log(e));
 
     console.log(result.data.request);
 
     setAllRequest(result.data.request);
+    };
 
-  } , [])
+
+
+
+
+
+  useEffect(() => {
+
+
+      updateInvoiceData();
+
+} , [])
+
+
 
 
 
@@ -47,6 +60,8 @@ setReques(nf[0]);
 
           }
 
+          window.location.reload();
+
           const io = {
             aadharCard : nf[0].aadharCard,
             panCard : nf[0].panCard,
@@ -68,6 +83,8 @@ setReques(nf[0]);
             status: "accepted"
           }
           await axios.post('http://127.0.0.1:4000/tenant/status' , jk );
+
+
 
 
 
