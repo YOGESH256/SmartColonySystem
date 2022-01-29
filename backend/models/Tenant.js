@@ -20,7 +20,7 @@ var reviewSchema = new mongoose.Schema({
   }
 
 });
-const review = mongoose.model('review', reviewSchema);
+const Review = mongoose.model('review', reviewSchema);
 
 const tenantSchema = new mongoose.Schema({
   name: {
@@ -33,7 +33,7 @@ const tenantSchema = new mongoose.Schema({
   userId: {
     type:mongoose.Schema.Types.ObjectId,
 
-    ref:'userId',
+    ref:'User',
   },
 
   servicespassword: {
@@ -89,4 +89,4 @@ reviews: [reviewSchema]
 const Tenant = mongoose.model('Tenant', tenantSchema);
 
 
-export default Tenant;
+export  {Tenant , Review};

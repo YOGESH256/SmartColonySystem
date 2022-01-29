@@ -1,5 +1,5 @@
 import Property from '../models/Property.js'
-import Tenant from '../models/Tenant.js'
+import {Tenant , Review} from '../models/Tenant.js'
 import User from '../models/User.js'
 import File from '../models/File.js'
 import Request from '../models/Request.js'
@@ -10,13 +10,15 @@ import passport from 'passport';
 
 const getPropertyData = async(req, res) => {
   const products = await Property.find({});
-  console.log(products);
+
+
+  // console.log(products);
   res.json(products)
 }
 
 const addPropertyData = async(req, res) => {
   const op = req.body;
-  console.log(op);
+  // console.log(op);
 
 const ol = new Property(op);
 
@@ -27,23 +29,7 @@ await ol.save();
   });
 }
 
-const addReviewData = async(req, res) => {
-  const op = req.body;
-  console.log(op.nature);
 
-const ol = await  Tenant.findById("61adccb3d8b47f7d31beb91d")
-console.log(ol);
-
-ol.reviews.push(op);
-
-
-
-await ol.save();
-
-  res.json({
-    message: "Added Tenant Data"
-  });
-}
 
 
 const login = (req, res, next) => {
@@ -82,7 +68,7 @@ const register = (req, res) => {
 }
 
 const getUser = (req, res) => {
-  console.log("In user" + req.user);
+  // console.log("In user" + req.user);
   res.send(req.user); // The req.user stores the entire user that has been authenticated inside of it.
 }
 
@@ -128,9 +114,10 @@ const documentData = async(req , res) => {
 
 
 
+
  try {
    const request = new Request({
-     userId: req.user.id,
+     userId: "61f23a15baf3a6f67f94f978",
      aadharCard: req.body.aadharCard,
      panCard: req.body.panCard,
      extraDocument: req.body.extraDocument,
@@ -191,11 +178,11 @@ const getAllRequest = async(req , res) => {
 
 const tenantData = async(req , res) => {
 
-
+console.log(req.user);
 
   try {
     const tenant = new Tenant({
-      userId: req.user.id,
+      userId: "61f23a15baf3a6f67f94f978",
       name: req.body.name,
       email: req.body.email,
       aadharCard: req.body.aadharCard,
@@ -271,11 +258,46 @@ await request.save();
 
 
 
-
-
-
-
 }
+
+
+const addReviewData = async(req, res) => {
+console.log(req.body);
+
+  const review = new Review({
+    comments: req.body.message,
+    rating: req.body.rating,
+    nature: req.body.nature,
+
+  })
+
+
+
+
+
+
+
+// const ol = await  Tenant.find({userId: req.user.id})
+const ol = await Tenant.findOne({userId: "61f23a15baf3a6f67f94f978"});
+
+
+const op = ol.reviews;
+op.push(review);
+ol.reviews = op;
+
+console.log(ol);
+
+
+
+
+await ol.save();
+
+  res.json({
+    message: "Added Tenant Data"
+  });
+}
+
+
 
 
 

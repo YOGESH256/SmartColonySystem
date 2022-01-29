@@ -9,8 +9,18 @@ import session from 'express-session'
 import MongoStore from 'connect-mongo'
 import path from 'path'
 
+
+var workerPassport = new  passport.Passport();
+var userPassport = new  passport.Passport();
+
+import passportConfig from "./middleware/passportworker.js";
+passportConfig(workerPassport);
+
+
 import passportConfigs from "./middleware/passport.js";
-passportConfigs(passport);
+passportConfigs(userPassport);
+
+
 
 
 
@@ -26,7 +36,13 @@ connectDB();
 
 
 
-
+app.use(express.json())
+app.use(
+  cors({
+    origin: "http://localhost:3000", // <-- location of the react app were connecting to
+    credentials: true,
+  })
+);
 
 
 
@@ -43,20 +59,27 @@ app.use(session({
 
 
 //passport
+
+
+
 app.use(passport.initialize());
 app.use(passport.session());
+// Set global var
+app.use(function (req, res, next) {
+
+// res.locals.login = req.isAuthenticated();
+
+// console.log(req.locals.login);
+
+
+  next()
+})
 
 const __dirname = path.resolve()
 app.use('/files' , express.static(path.join(__dirname , '/files')))
 
 
-app.use(express.json())
-app.use(
-  cors({
-    origin: "http://localhost:3000", // <-- location of the react app were connecting to
-    credentials: true,
-  })
-);
+
 
 
 

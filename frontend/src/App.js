@@ -13,6 +13,7 @@ import Profile from './pages/Profile'
 import Request from './pages/Request'
 import TenantRequest from './pages/TenantRequest'
 import Login from './pages/Login'
+import WorkerLogin from './pages/WorkerLogin'
 
 import './App.css';
 import './App.css';
@@ -62,6 +63,11 @@ function App() {
          </Route>
          <Route path="/login">
            <Login/>
+         </Route>
+
+         {/* Worker Login */}
+         <Route path="/workerlogin">
+           <WorkerLogin/>
          </Route>
 
         </Switch>

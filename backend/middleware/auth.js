@@ -1,15 +1,22 @@
-module.exports = {
+const kl = {
   ensureAuthenticated: function(req, res, next) {
     if (req.isAuthenticated()) {
       return next();
     }
-    req.flash('error_msg', 'Please log in to view that resource ');
-    res.redirect('/login');
+    return next();
+
+
   },
   forwardAuthenticated: function(req, res, next) {
     if (!req.isAuthenticated()) {
       return next();
     }
-    res.redirect('/form');
+    res.redirect('/');
   }
 };
+
+
+const ensureAuthenticated = kl.ensureAuthenticated;
+const forwardAuthenticated = kl.forwardAuthenticated;
+
+export {ensureAuthenticated , forwardAuthenticated}
