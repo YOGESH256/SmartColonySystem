@@ -6,7 +6,7 @@ import AmenInside2 from "../components/Amencomp/AmenInside2";
 import { Link } from "react-router-dom";
 // import './styles.css'
 import axios from 'axios';
-const Brochure = () => {
+const AdminValidation = () => {
 
     const [image, setImage] = useState('')
 
@@ -179,13 +179,10 @@ setExtraDocument(file);
         console.log(panCard);
         console.log(extraDocument);
         console.log(propertyId);
-        const ol =  JSON.parse(localStorage.getItem('User'))
-
 
         try {
 
           const io = {
-            userId: ol._id,
             aadharCard : aadharCard.name,
             panCard : panCard.name,
             extraDocument: extraDocument.name,
@@ -194,7 +191,6 @@ setExtraDocument(file);
             startDate: startDate,
             propertyId: propertyId,
           }
-
 
           const {data} = await axios.post('http://127.0.0.1:4000/request' , io)
 
@@ -218,7 +214,7 @@ setExtraDocument(file);
       <Image />
 <form  style = {{backgroundColor : 'white'}} onSubmit = {submitHandler}>
       <div className="container mt-5">
-        <h3>Brochure </h3>
+        <h3>AdminValidation </h3>
 
 
         <div className="row">
@@ -328,6 +324,8 @@ setExtraDocument(file);
 
                 <h6 className="h1">Contact </h6>
                 <input  value = {contactNo} onChange = {e => setContactNo(e.target.value)} type = "text"  />
+                <h6 className="h1">Description </h6>
+                <input  value = {contactNo} onChange = {e => setContactNo(e.target.value)} type = "text"  />
 
                 <h6 className="h1">Start date </h6>
                 <input value = {startDate} onChange = {e => setStartDate(e.target.value)}  type = "date"  />
@@ -351,4 +349,4 @@ setExtraDocument(file);
   );
 };
 
-export default Brochure;
+export default AdminValidation;

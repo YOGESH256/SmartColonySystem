@@ -9,38 +9,41 @@ function Login() {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const [data, setData] = useState(null);
-  const register = () => {
-    Axios({
-      method: "POST",
-      data: {
-        username: registerUsername,
-        email: registerEmail,
-        password: registerPassword,
-      },
-      withCredentials: true,
-      url: "http://localhost:4000/register",
-    }).then((res) => console.log(res));
+  const register = async() => {
+
+const data = {
+    username: registerUsername,
+    email: registerEmail,
+    password: registerPassword,
   };
-  const login = () => {
-    Axios({
-      method: "POST",
-      data: {
-        email: loginEmail,
-        password: loginPassword,
-      },
-      withCredentials: true,
-      url: "http://localhost:4000/login",
-    }).then((res) => console.log(res));
+
+  await Axios.post("http://localhost:4000/register" , data ,{
+  withCredentials: true
+} ).then((res) => console.log(res)).catch(e => console.log(e.message));
+
+
   };
-  const getUser = () => {
-    Axios({
-      method: "GET",
-      withCredentials: true,
-      url: "http://localhost:4000/user",
-    }).then((res) => {
-      setData(res.data);
-      console.log(res.data);
-    });
+  const login = async() => {
+
+    const data = {
+      email: loginEmail,
+      password: loginPassword,
+    }
+
+     let jk = await Axios.post("http://localhost:4000/login" , data ).catch(e => console.log(e.message));
+     localStorage.setItem('User', JSON.stringify(jk.data));
+
+  };
+  const getUser = async() => {
+
+    // await Axios.get("http://localhost:4000/user").then((res) => {
+    //   setData(res.data);
+    //   console.log(res.data);
+    // }).catch(e => console.log(e.message));
+
+const ol =  JSON.parse(localStorage.getItem('User'))
+setData(ol);
+
   };
   return (
     <div className="container">

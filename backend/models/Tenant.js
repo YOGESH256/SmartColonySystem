@@ -3,7 +3,10 @@ import  mongoose from 'mongoose';
 
 
 var reviewSchema = new mongoose.Schema({
-
+  name: {
+    type: String,
+    required: true
+  },
   comments: {
     type: String,
     required: true
@@ -17,7 +20,12 @@ var reviewSchema = new mongoose.Schema({
     type: String,
     enum : ['amenities','property'],
     required: true
+  },
+  Date: {
+    type: Date,
+    default: Date.now()
   }
+
 
 });
 const Review = mongoose.model('review', reviewSchema);
@@ -32,7 +40,6 @@ const tenantSchema = new mongoose.Schema({
   },
   userId: {
     type:mongoose.Schema.Types.ObjectId,
-
     ref:'User',
   },
 
@@ -79,7 +86,7 @@ roomno: {
   type: Number,
   required: true
 },
-reviews: [reviewSchema]
+// reviews: [reviewSchema]
 
 
 

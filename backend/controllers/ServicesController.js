@@ -13,7 +13,9 @@ const workerlogin = (req, res, next) => {
 
   console.log(req.body);
 
-  passport.authenticate("local", (err, user, info) => {
+
+  passport.authenticate("local-two", (err, user, info) => {
+
     if (err) throw err;
     if (!user) res.send("No User Exists");
     else {
@@ -47,7 +49,7 @@ const workerregister = (req, res) => {
 
 const getWorker = (req, res) => {
   console.log("In user" + req.user);
-  res.send(req.user); // The req.user stores the entire user that has been authenticated inside of it.
+  res.send(req.user);
 }
 
 

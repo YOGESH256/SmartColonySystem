@@ -34,11 +34,20 @@ const workerSchema = new mongoose.Schema({
     type: Number,
 
   },
+  role: {
+    type: String,
+    default: "worker"
+
+  },
 
   Services: {
     type: String,
 
   },
+  descriptionofworker: {
+    type: String,
+  },
+
   panCard: {
     type: String,
 

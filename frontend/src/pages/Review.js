@@ -1,4 +1,4 @@
-import React , {useState} from 'react'
+import React , {useState , useEffect} from 'react'
 import "../styles/review.css"
 import axios from 'axios';
 export default function Review() {
@@ -6,11 +6,33 @@ export default function Review() {
 
   const [message , setMessage] = useState("")
   const [rating , setRating] = useState(0);
-  const [nature , setNature] = useState("")
+  const [nature , setNature] = useState("");
+  const [reviews , setReviews] = useState([]);
+
+
+
+  useEffect(async() => {
+
+
+          let result = await axios.get('http://localhost:4000/allreviews?type=amenities').catch(e => console.log(e))
+
+
+console.log(result.data);
+  setReviews(result.data);
+
+
+
+        // setFiles(files)
+
+  } , [])
+
 
 
   const submitHandler = async(e) => {
+
     e.preventDefault();
+    const ol =  JSON.parse(localStorage.getItem('User'))
+    console.log(ol);
     console.log(rating);
     console.log(message);
     console.log(nature);
@@ -18,7 +40,10 @@ export default function Review() {
     const lo = {
       rating ,
       message,
-      nature
+      nature,
+      name: ol.username,
+      userId: ol._id
+
     }
 
 try {
@@ -55,22 +80,16 @@ console.log(e);
         <div class="row">
             <div class="col-sm-5 col-md-6 col-12 pb-4">
                 <h1>Comments</h1>
-                <div class="comment mt-4 text-justify float-left"> <img src="https://i.imgur.com/yTFUilP.jpg" alt="" class="rounded-circle" width="40" height="40"/>
-                    <h4>Jhon Doe</h4> <span>- 20 October, 2018</span> <br/>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus numquam assumenda hic aliquam vero sequi velit molestias doloremque molestiae dicta?</p>
-                </div>
-                <div class="text-justify darker mt-4 float-right"> <img src="https://i.imgur.com/CFpa3nK.jpg" alt="" class="rounded-circle" width="40" height="40"/>
-                    <h4>Rob Simpson</h4> <span>- 20 October, 2018</span> <br/>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus numquam assumenda hic aliquam vero sequi velit molestias doloremque molestiae dicta?</p>
-                </div>
-                <div class="comment mt-4 text-justify"> <img src="https://i.imgur.com/yTFUilP.jpg" alt="" class="rounded-circle" width="40" height="40"/>
-                    <h4>Jhon Doe</h4> <span>- 20 October, 2018</span> <br/>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus numquam assumenda hic aliquam vero sequi velit molestias doloremque molestiae dicta?</p>
-                </div>
-                <div class="darker mt-4 text-justify"> <img src="https://i.imgur.com/CFpa3nK.jpg" alt="" class="rounded-circle" width="40" height="40"/>
-                    <h4>Rob Simpson</h4> <span>- 20 October, 2018</span> <br/>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus numquam assumenda hic aliquam vero sequi velit molestias doloremque molestiae dicta?</p>
-                </div>
+                { reviews.map((review) => (
+                  <div class="comment mt-4 text-justify float-left"> <img src="https://i.imgur.com/yTFUilP.jpg" alt="" class="rounded-circle" width="40" height="40"/>
+                      <h4>{review.name}</h4> <span>- 20 October, 2018</span> <br/>
+                      <p>{review.comments}</p>
+                  </div>
+                ))
+
+                }
+
+
             </div>
             <div class="col-lg-4 col-md-5 col-sm-4 offset-md-1 offset-sm-1 col-12 mt-4">
                 <form id="algin-form"  onSubmit = {submitHandler}>

@@ -17,6 +17,12 @@ const userSchema = new mongoose.Schema({
     required: true,
 
   }
+,
+  role: {
+    type: String,
+    default: "user"
+
+  },
  //  googleId: {
  //   type: String,
  //   required: true,
@@ -36,7 +42,7 @@ const userSchema = new mongoose.Schema({
  // image: {
  //   type: String,
  // },
- ,
+ 
  createdAt: {
    type: Date,
    default: Date.now,

@@ -44,7 +44,7 @@ const submitHandler = async(e) => {
   console.log(e.target.id);
 const nf = getAllRequest.filter(req => req._id === e.target.id);
 
-
+console.log(nf[0]);
 setReques(nf[0]);
 
 
@@ -60,7 +60,8 @@ setReques(nf[0]);
 
           }
 
-          window.location.reload();
+
+
 
           const io = {
             aadharCard : nf[0].aadharCard,
@@ -69,10 +70,11 @@ setReques(nf[0]);
             contactNo: nf[0].ContactNo,
             endDate: nf[0].EndDate,
             startDate: nf[0].StartDate,
-            propertyId:nf[0].propertyId._id,
+            propertyId:nf[0].property._id,
             roomno: roomno,
-            name: "Ram",
-            email: "Sharma123@gmail.com",
+            name: nf[0].user.username,
+            email: nf[0].user.email,
+            userId: nf[0].user._id,
           }
 
           setRoomno(0);
@@ -99,7 +101,7 @@ setReques(nf[0]);
 
 
 
-
+window.location.reload();
 
 
 }
@@ -137,27 +139,27 @@ const rejectHandler = async(id) => {
         <div class="col-sm-10 m-auto ">
           <div class="card">
             <div class="card-body text-center">
-              <h5 class="card-title">Soham</h5>
-              <p class="card-text">{request.propertyId.type}</p>
-              <p class="card-text">{request.propertyId.type}</p>
-              <p class="card-text"> Rs {request.propertyId.price}</p>
-              <p class="card-text">{request.propertyId.unitSize}</p>
-              <p class="card-text">{request.propertyId.bhk}</p>
+              <h5 class="card-title">{request.user.username}</h5>
+              <p class="card-text">{request.property.type}</p>
+              <p class="card-text">{request.property.type}</p>
+              <p class="card-text"> Rs {request.property.price}</p>
+              <p class="card-text">{request.property.unitSize}</p>
+              <p class="card-text">{request.property.bhk}</p>
               <p><a href={`http://localhost:4000/files/${request.aadharCard}`} class="">AadharCard</a></p>
               <p><a href={`http://localhost:4000/files/${request.panCard}`} class="">Pancard</a></p>
               <p><a href={`http://localhost:4000/files/${request.extraDocument}`} class="">extraDocument</a></p>
 
 
-<select class="form-select form-select-sm mb-3 " aria-label=".form-select-lg example" onChange = {e => setRoomno(e.target.value)} required>
-  <option selected>Open this select menu</option>
-  {request.propertyId?.roomnos?.map((room) => (
-    <option value={room} >{room}</option>
-  ))
+                <select class="form-select form-select-sm mb-3 " aria-label=".form-select-lg example" onChange = {e => setRoomno(e.target.value)} required>
+                  <option selected>Open this select menu</option>
+                  {request.property?.roomnos?.map((room) => (
+                    <option value={room} >{room}</option>
+                  ))
 
-  }
+                  }
 
 
-</select>
+                </select>
 
 <br/>
 

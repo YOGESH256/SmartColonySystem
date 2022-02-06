@@ -4,6 +4,8 @@ import User from '../models/User.js'
 import File from '../models/File.js'
 import Request from '../models/Request.js'
 
+import session from 'express-session'
+
 import bcrypt from 'bcryptjs';
 import passport from 'passport';
 
@@ -36,13 +38,18 @@ const login = (req, res, next) => {
 
   console.log(req.body);
 
-  passport.authenticate("local", (err, user, info) => {
+  passport.authenticate("local-one", (err, user, info) => {
     if (err) throw err;
-    if (!user) res.send("No User Exists");
+    if (!user){
+
+      res.send("No User Exists")
+    }
     else {
       req.logIn(user, (err) => {
         if (err) throw err;
-        res.send("Successfully Authenticated");
+        // res.status(200).json({errors: false, user: user});
+        res.send(user)
+
         console.log(req.user);
       });
     }
@@ -61,15 +68,27 @@ const register = (req, res) => {
         username: req.body.username,
         password: hashedPassword,
       });
+
+
+
       await newUser.save();
       res.send("User Created");
     }
   });
 }
 
-const getUser = (req, res) => {
-  // console.log("In user" + req.user);
-  res.send(req.user); // The req.user stores the entire user that has been authenticated inside of it.
+const getUser = async(req, res) => {
+// console.log(req.passport.session.user);
+console.log(req.user);
+console.log(req.session);
+
+
+
+
+res.send(req.user)
+
+
+ // The req.user stores the entire user that has been authenticated inside of it.
 }
 
 
@@ -113,18 +132,18 @@ const getFiles =  async (req, res) => {
 const documentData = async(req , res) => {
 
 
-
+console.log(req.body);
 
  try {
    const request = new Request({
-     userId: "61f23a15baf3a6f67f94f978",
+     user: req.body.userId,
      aadharCard: req.body.aadharCard,
      panCard: req.body.panCard,
      extraDocument: req.body.extraDocument,
      ContactNo: req.body.contactNo,
      StartDate: req.body.startDate,
      EndDate: req.body.endDate,
-     propertyId: req.body.propertyId,
+     property: req.body.propertyId,
    })
 
 
@@ -155,7 +174,11 @@ const getAllRequest = async(req , res) => {
 
    try {
 
-   const request = await Request.find({}).populate("propertyId")
+   const request = await Request.find({status: "unverified"}).populate("property").populate("user");
+
+
+   console.log(request);
+
 
 
 
@@ -178,11 +201,11 @@ const getAllRequest = async(req , res) => {
 
 const tenantData = async(req , res) => {
 
-console.log(req.user);
+console.log(req.body);
 
   try {
     const tenant = new Tenant({
-      userId: "61f23a15baf3a6f67f94f978",
+      userId: req.body.userId,
       name: req.body.name,
       email: req.body.email,
       aadharCard: req.body.aadharCard,
@@ -264,37 +287,70 @@ await request.save();
 const addReviewData = async(req, res) => {
 console.log(req.body);
 
+
+
+
+
+
+try {
+
+  const ol = await Tenant.findOne({userId: req.body.userId  });
+  console.log(ol);
+
+
+  if(!ol)
+  {
+    return res.json({
+      message: "Error"
+    });
+
+  }
+
+
+
+
   const review = new Review({
     comments: req.body.message,
     rating: req.body.rating,
     nature: req.body.nature,
+    name: req.body.name,
 
   })
 
 
 
+  await review.save();
 
 
 
 
-// const ol = await  Tenant.find({userId: req.user.id})
-const ol = await Tenant.findOne({userId: "61f23a15baf3a6f67f94f978"});
-
-
-const op = ol.reviews;
-op.push(review);
-ol.reviews = op;
-
-console.log(ol);
 
 
 
+    return res.json({
+      message: "Added Tenant Data"
+    });
+} catch (e) {
 
-await ol.save();
+console.log(e);
+}
 
-  res.json({
-    message: "Added Tenant Data"
-  });
+
+}
+
+
+
+
+
+const allReviewsByType = async(req , res) => {
+
+console.log(req.query);
+  const reviews = await Review.find({nature : req.query.type});
+
+
+
+
+  res.json(reviews)
 }
 
 
@@ -302,10 +358,4 @@ await ol.save();
 
 
 
-
-
-
-
-
-
-export  {getPropertyData , addPropertyData , addReviewData , login , register , getUser , getFiles ,UploadFile  , documentData , getAllRequest , tenantData , statusData};
+export  {getPropertyData , addPropertyData , addReviewData , login , register , getUser , getFiles ,UploadFile  , documentData , getAllRequest , tenantData , statusData , allReviewsByType};

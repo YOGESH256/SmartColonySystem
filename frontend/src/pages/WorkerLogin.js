@@ -9,40 +9,41 @@ function Login() {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const [data, setData] = useState(null);
-  const register = () => {
-    Axios({
-      method: "POST",
-      data: {
-        username: registerUsername,
-        email: registerEmail,
-        password: registerPassword,
-      },
-      withCredentials: true,
-      url: "http://localhost:4000/workerregister",
-    }).then((res) => console.log(res));
+
+  const register = async() => {
+
+const data = {
+    username: registerUsername,
+    email: registerEmail,
+    password: registerPassword,
   };
-  const login = () => {
-    Axios({
-      method: "POST",
-      data: {
-        email: loginEmail,
-        password: loginPassword,
-      },
-      withCredentials: true,
-      url: "http://localhost:4000/workerlogin",
-    }).then((res) => console.log(res));
+
+  await Axios.post("http://localhost:4000/workerregister" , data ).then((res) => console.log(res)).catch(e => console.log(e.message));
+
 
   };
-  const getUser = () => {
-    Axios({
-      method: "GET",
-      withCredentials: true,
-      url: "http://localhost:4000/worker",
-    }).then((res) => {
+  const login = async() => {
+
+    const data = {
+      email: loginEmail,
+      password: loginPassword,
+    }
+
+    await Axios.post("http://localhost:4000/workerlogin" , data ).then((res) => console.log(res)).catch(e => console.log(e.message));
+
+
+  };
+  const getUser = async() => {
+
+    await Axios.get("http://localhost:4000/worker").then((res) => {
       setData(res.data);
       console.log(res.data);
-    });
+    }).catch(e => console.log(e.message));
+
+
   };
+
+
   return (
     <div className="container">
       <div>

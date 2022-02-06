@@ -10,20 +10,6 @@ import MongoStore from 'connect-mongo'
 import path from 'path'
 
 
-var workerPassport = new  passport.Passport();
-var userPassport = new  passport.Passport();
-
-import passportConfig from "./middleware/passportworker.js";
-passportConfig(workerPassport);
-
-
-import passportConfigs from "./middleware/passport.js";
-passportConfigs(userPassport);
-
-
-
-
-
 
 const app = express()
 
@@ -49,8 +35,8 @@ app.use(
 
 app.use(session({
 	secret: 'Your secret key',
-	resave: true,
-	saveUninitialized: true,
+	resave: false,
+	saveUninitialized: false,
 	store: new MongoStore({
       mongoUrl: mongoose.connection._connectionString,
       mongoOptions: { useUnifiedTopology: true }
@@ -58,22 +44,38 @@ app.use(session({
 }));
 
 
+
+
 //passport
+
+
 
 
 
 app.use(passport.initialize());
 app.use(passport.session());
-// Set global var
-app.use(function (req, res, next) {
-
-// res.locals.login = req.isAuthenticated();
-
-// console.log(req.locals.login);
 
 
-  next()
-})
+import passportConfigs from "./middleware/passport.js";
+passportConfigs(passport);
+
+
+
+// app.use((req, res, next) => {req.user = req.session.user; next()})
+// app.use(function(req, res, next){
+
+
+// req._passport.session = req.session['passport']
+//   console.log(req._passport.session + "      ll");
+//   next();
+// })
+
+
+
+
+
+
+
 
 const __dirname = path.resolve()
 app.use('/files' , express.static(path.join(__dirname , '/files')))

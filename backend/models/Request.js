@@ -1,10 +1,10 @@
 import  mongoose from 'mongoose';
 
 const requestSchema = new mongoose.Schema({
-  userId: {
+  user: {
     type:mongoose.Schema.Types.ObjectId,
 
-    ref:'userId',
+    ref:'User',
   },
   ContactNo: {
     type: String,
@@ -20,7 +20,7 @@ const requestSchema = new mongoose.Schema({
     required: true
 
   },
-  propertyId: {
+  property: {
     type:mongoose.Schema.Types.ObjectId,
     ref:'Property',
   },

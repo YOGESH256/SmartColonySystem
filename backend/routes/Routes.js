@@ -1,10 +1,11 @@
 import express from 'express'
 const router = express.Router()
-import {getPropertyData , addPropertyData ,addReviewData , login , register , getUser , getFiles , UploadFile , documentData , getAllRequest , tenantData , statusData} from '../controllers/Controller.js'
+import {getPropertyData , addPropertyData ,addReviewData , login , register ,
+  allReviewsByType , getUser , getFiles , UploadFile , documentData , getAllRequest , tenantData , statusData} from '../controllers/Controller.js'
 import {workerlogin , workerregister , getWorker} from '../controllers/ServicesController.js'
 import multer from 'multer'
 import passport from 'passport';
-// import {ensureAuthenticated ,forwardAuthenticated} from '../middleware/auth.js'
+import {ensureAuthenticated ,forwardAuthenticated } from '../middleware/auth.js'
 
 
 
@@ -41,9 +42,10 @@ router.get('/brochure' , getPropertyData);
 router.post('/property/add' , addPropertyData);
 router.post('/request' , documentData);
 router.post('/addreview' , addReviewData);
-router.post('/login' , login)
+router.get('/allreviews'   ,  allReviewsByType)
+router.post('/login' ,  login)
 router.post('/register' , register)
-router.get('/user' , getUser)
+router.get('/user'   ,  getUser)
 
 router.get('/getAllRequest' , getAllRequest)
 router.get("/api/getFiles",)
@@ -54,9 +56,9 @@ router.post("/api/uploadFile" , upload.single("myFile"), UploadFile )
 
 // Worker Routes
 
-router.post('/workerlogin' , workerlogin)
+router.post('/workerlogin' ,    workerlogin)
 router.post('/workerregister' , workerregister)
-router.get('/worker' , getWorker)
+router.get('/worker' ,  getWorker)
 
 
 
