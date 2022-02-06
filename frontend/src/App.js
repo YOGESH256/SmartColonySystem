@@ -5,7 +5,7 @@ import Home from './pages/HomeComponent'
 import Admin from './pages/A_Navbar'
 import Rental from './pages/R_Navbar'
 import Services from "./pages/S_Navbar"
-import Upload_form from './pages/Upload_form'
+import Upload_Form from './pages/Upload_form'
 import Cart from './pages/Cart'
 import Comment from './pages/Comment'
 import Review from './pages/Review'
@@ -15,9 +15,8 @@ import TenantRequest from './pages/TenantRequest'
 import Login from './pages/Login'
 import WorkerLogin from './pages/WorkerLogin'
 import AdminValidation from './pages/AdminValidation'
+import './App.css';
 
-import './App.css';
-import './App.css';
 function App() {
   const location = useLocation();
 
@@ -41,8 +40,8 @@ function App() {
           <Route path="/service">
             <Services />
           </Route>
-          <Route path="/upload_form">
-            <Upload_form />
+          <Route path="/uploadform">
+            <Upload_Form />
           </Route>
          <Route path="/cart">
             <Cart />

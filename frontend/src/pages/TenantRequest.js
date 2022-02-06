@@ -1,5 +1,5 @@
 import React  , {useEffect , useState } from 'react'
-// import "../styles/Request.css"
+import "../styles/Request.css"
 import axios from 'axios'
 
 
@@ -128,10 +128,10 @@ const rejectHandler = async(id) => {
 
     return (
         <div class="main32">
-          <h1 className="service mr-4">Unaccepted Services</h1>
+          <h1 className="req-service mr-4">Unaccepted Services</h1>
 
 
-        <div class="row rahulya  ">
+        <div class="row row-style  ">
 
       { getAllRequest && getAllRequest.map(request => (
 
@@ -166,7 +166,7 @@ const rejectHandler = async(id) => {
 
               <button href="#" type = "button" onClick = {() => rejectHandler(request._id)} class="p-2 m-2 btn-primary">Reject</button>
               <button href="#"  type = "submit"  class="p-2 m-2 btn-danger">Accept </button>
-            {  /* <a href="#" class="batu2 btn-primary">Give Timing</a> */}
+            {  /* <a href="#" class="req-rej-btn btn-primary">Give Timing</a> */}
             </div>
           </div>
         </div>

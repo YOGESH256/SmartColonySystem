@@ -14,15 +14,15 @@ const HomeComponent = () => {
 `;
 
   return (
-    <Container id="home">
-      <Row>
+    <div id="home">
+      <div>
       <div className="logo-container" id="home-header">
           Smart<font>Colony</font>
       </div>
       <div>
       <Link to="/admin"><Button> Admin </Button></Link>
       </div>
-      </Row>
+      </div>
         <div className="cover">
         <Link to="/service" className="parent" id="section-services">
             <div className="child" >
@@ -35,7 +35,7 @@ const HomeComponent = () => {
             </div>
           </Link>
         </div>
-    </Container>
+    </div>
   );
 };
 

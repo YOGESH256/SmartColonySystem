@@ -30,18 +30,7 @@ let db = staticDetails;
 
 export const Plans=() =>{
   // let db = props.data;
-  const [state, setState] = useState(db);
-  let temp = state;
-  
-  //use this arrow funtion when state is a "let"
-  // setState = () =>{
-  //   state = floorDetails.filter((info) => {
-  //     return(
-  //       setDetails.bedrooms.includes(info.bedrooms)
-  //     )
-  //   });
-  //   console.log('state == temp',state===temp,state);
-  // } 
+  const [state, setState] = useState(true);
   
   // Options and Input form to be displayed
   function Options(){
@@ -53,7 +42,7 @@ export const Plans=() =>{
           Bedrooms:
           <Select
             // defaultValue={(state.map((info) =>{ return(info.bedrooms)}))}
-            defaultValue=""
+            defaultValue={setDetails.bedrooms}
             isMulti
             name="colors"
             options={opBed}
@@ -61,25 +50,16 @@ export const Plans=() =>{
             className="basic-multi-select"
             classNamePrefix="select"
             onChange={(e) => {
-              let arr = [];
-              for (var i = 0; i < e.length; i++) arr = arr.concat([e[i].value]);
-              setDetails.bedrooms = arr;
-              // setState();
-              setState(
-                db.filter((info) => {
-                  console.log(state)
-                  return(
-                    setDetails.bedrooms.includes(info.bedrooms)
-                  )
-                })
-              )
+              setDetails.bedrooms = e;
+              console.log(setDetails);
+              setState(!state);
             }}
           />
         </label>
         <label for="bathrooms">
           Bathrooms:
           <Select
-            defaultValue=""
+            defaultValue={setDetails.bathrooms}
             isMulti
             name="colors"
             options={opBath}
@@ -87,17 +67,9 @@ export const Plans=() =>{
             className="basic-multi-select"
             classNamePrefix="select"
             onChange={(e) => {
-              let arr = [];
-              for (var i = 0; i < e.length; i++) arr = arr.concat([e[i].value]);
-              setDetails.bathrooms = arr;
-              // setState();
-              setState(
-                db.filter((info) => {
-                  return(
-                    setDetails.bedrooms.includes(info.bedrooms)
-                  )
-                })
-              )
+              setDetails.bathrooms = e;
+              console.log(setDetails);
+              setState(!state);
             }}
           />
         </label>
@@ -188,37 +160,36 @@ export const Plans=() =>{
     );
   };
 
-  // Cards which need to be re-rendered
-  // function Map(props){
-  
-  //   return(
-  //     <div className="map-team-cards">
-  //       {props.arr.map((info, index) => {
-  //         return (
-  //           <FloorCard
-  //             type={info.type}
-  //             bed={opBed[info.bedrooms].label}
-  //             bath={info.bathrooms}
-  //             size={info.unitSize}
-  //             imageUrl={info.planImg}
-  //             price={info.price}
-  //             available={info.available}
-  //             key={index}
-  //           />
-  //         )}
-  //       )}
-  //     </div>
-  //   )
-  // }
-  return(
+  let a = {
+    bedrooms: [],
+    bathrooms: [],
+    unitSize: "",
+    price: 0,
+  };
+  setDetails.bedrooms.forEach((value, index, array) => { a.bedrooms = a.bedrooms.concat(value.value)}) 
+  setDetails.bathrooms.forEach((value) => { a.bathrooms = a.bathrooms.concat(value.label)}) 
+
+return(
     <div>
         <Options />
         {/* <Map arr={state}/> */}
         <div className="map-team-cards">
-        {state.map((info, index) => {
+        {db.filter(info => {
+            if (a.bedrooms.length === 0)
+                return true
+            else
+                return (a.bedrooms.includes(info.bedrooms))
+        })
+        .filter(info => {
+            if (a.bathrooms.length === 0)
+                return true
+            else
+                return (a.bathrooms.includes(info.bhk))
+        })
+        .map(info => {
           return (
             <FloorCard
-              type={info.type}
+              type={info.type}  
               subtype={opBed[info.bedrooms].label}
               bed={info.bhk}
               size={info.unitSize}

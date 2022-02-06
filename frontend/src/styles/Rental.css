@@ -124,7 +124,7 @@ Map(399), VedioTour(496), Header(523), Image(543), Amenities(566) */
   .car main#carousel {
     grid-row: 1 / 2;
     grid-column: 1 / 8;
-    width: 100vw;
+    width: -webkit-fill-available;
     height: 500px;
     display: flex;
     align-items: center;

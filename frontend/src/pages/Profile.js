@@ -4,7 +4,7 @@ import "../styles/Profile.css"
 export default function profile() {
         return (
 <>
-<div class="wrapper">
+<div class="prof-wrapper">
     <div class="left">
         <img src="https://i.imgur.com/cMy8V5j.png" 
         alt="user" width="100"/>
@@ -59,7 +59,7 @@ export default function profile() {
               <li><a href="#"><i class="fab fa-instagram"></i></a></li>
           </ul>
       </div>
-<button type="button" class=" btn-danger button">Action</button>
+<button type="button" class=" btn-danger" id="prof-action">Action</button>
     </div>
     
 </div>
