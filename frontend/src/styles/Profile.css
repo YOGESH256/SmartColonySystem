@@ -115,3 +115,49 @@ body{
 #prof-action{
     size: 8vh;
 }
+
+/* Login Styles */
+.login-main{
+  height: 100vh;
+  display: grid;
+  justify-content: center;
+  background: linear-gradient(to right, rgb(142, 228, 224), rgb(54, 140, 161)); 
+}
+@media all and (min-width: 480px) {
+  /* .login-main {
+    padding: 60px 0;
+  }
+
+  .login-main form {
+    margin: 0 auto;
+    border: solid;
+    max-width: 320px;
+  } */
+  .x {
+    display:none;
+  }
+  .signup ,.signin {
+    padding: 60px 0;
+    width: 320px;
+  }
+
+  .signin form
+  ,.signup form {
+    margin: 0 auto;
+    padding: 5% 10%;
+    border: solid #353c4e 1px;
+    border-radius: 5px;
+    max-width: 320px;
+  }
+  .signin .form-group
+  ,.signup .form-group {
+    margin: 0 0 10px 0;   
+  }
+  /* .signup form {
+    margin: 0 auto;
+    padding: 5% 10%;
+    border:solid #353c4e 1px;
+    border-radius: 5px;
+    max-width: 320px;
+  } */
+}

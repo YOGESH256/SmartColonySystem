@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 import { useEffect, useState } from "react";
 import Select from "react-select";
 import { Container, Row } from "react-bootstrap";
-import FloorCard from "../components/FloorCards";
+import {FloorCard} from "../components/Cards";
 import { floorDetail, staticDetails } from "../components/FloorDetails";
 // import "../styles/FloorPlan.css";
 

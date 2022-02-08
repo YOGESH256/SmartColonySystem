@@ -1,7 +1,7 @@
 import { Col, Card, Button } from "react-bootstrap";
 import { route } from "react-router-dom";
-// import "../styles/FloorPlan.css";
-const FloorCard = (props) => {
+
+export const FloorCard = (props) => {
   return (
     <Card md={4} sm={6} xs={12}
       className="mb-5 floor-card"
@@ -40,7 +40,5 @@ const FloorCard = (props) => {
         </div>
       </Card.Body>
     </Card>
-  );
+  )
 };
-
-export default FloorCard;

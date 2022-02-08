@@ -4,31 +4,73 @@ import { ReactComponent as CloseMenu } from "../Utils/x.svg";
 import { ReactComponent as MenuIcon } from "../Utils/menu.svg";
 import "../styles/Admin.css";
 
+import * as FaIcons from 'react-icons/fa';
+import * as AiIcons from 'react-icons/ai';
+import { IconContext } from 'react-icons';
+import {SidebarData} from "./A_SidebarData";
+
 import A_Home from "./A_Home";
+import TenantRequest from "./TenantRequest";
 import A_Approve from "./A_Approve";
 
-const R_Navbar = () => {
+
+
+const A_Navbar = () => {
   let { path, url } = useRouteMatch();
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
+  const [wid, setWid] = useState("0%");
+  const openSidenav = () => {
+    setWid("15%")
+  }
+  const closeSidenav = ( ) => {
+    setWid("0%")
+  }
+  const SideNav = (props) => {
+    return (
+      <div className="adm sidenav" style={{ width:props.width, paddingTop: "20px" }}>
+      <IconContext.Provider value={{ color: '#fff' }}>
+        <nav className={wid === "15%" ? 'nav-menu active' : 'nav-menu'} >
+          <ul className='nav-menu-items' >
+            <li className='navbar-toggle' onClick={props.closeNav}>
+              <Link to={`${url}`} className='menu-bars' >
+                <AiIcons.AiOutlineClose />
+              </Link>
+            </li>
+            {SidebarData.map((item, index) => {
+              return (
+                <li key={index} className={item.cName}>
+                  <Link to={item.path}>
+                    {item.icon}
+                    <span>{item.title}</span>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+      </IconContext.Provider>
+      </div>
+    );
+    };
+  
   return (
-    <div>
+    <div className="A_header">
       <div className="R_header">
         <div className="logo-nav">
-          <div className="logo-container">
+
+        <IconContext.Provider  value={{ color: '#fff' }}>
+            <FaIcons.FaBars style={{ width:'2em', height:'2em'}} onClick={openSidenav} />
+        </IconContext.Provider>
+        <SideNav width={wid} closeNav={closeSidenav} />
+
+          <div className="logo-container" style={{paddingLeft:"15vw"}}>
           <Link to="" className="logo-container">
             Smart<font>Colony</font>
             </Link>
           </div>
-          <ul className={click ? "nav-options active" : "nav-options"}>
-            <li className="R_option" onClick={closeMobileMenu}>
-              <Link to={`${url}/home`}>Home</Link>
-            </li>
-            <li className="R_option" onClick={closeMobileMenu}>
-              <Link to={`${url}/approve`}>Approve</Link>
-            </li>
-          </ul>
+          
         </div>
         <div className="mobile-menu" onClick={handleClick}>
           {click ? (
@@ -42,6 +84,7 @@ const R_Navbar = () => {
         <Switch>
           <Route exact path={path} component={A_Home} />
           <Route path="/admin/home" component={A_Home} />
+          <Route path="/admin/tenantrequest" component={TenantRequest} />
           <Route path="/admin/approve" component={A_Approve} />
         </Switch>
       </div>
@@ -49,4 +92,4 @@ const R_Navbar = () => {
   );
 };
 
-export default R_Navbar;
+export default A_Navbar;

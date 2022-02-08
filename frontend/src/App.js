@@ -11,7 +11,6 @@ import Comment from './pages/Comment'
 import Review from './pages/Review'
 import Profile from './pages/Profile'
 import Request from './pages/Request'
-import TenantRequest from './pages/TenantRequest'
 import Login from './pages/Login'
 import WorkerLogin from './pages/WorkerLogin'
 import AdminValidation from './pages/AdminValidation'
@@ -57,9 +56,6 @@ function App() {
          </Route>
          <Route path="/request">
            <Request/>
-         </Route>
-         <Route path="/tenantrequest">
-           <TenantRequest/>
          </Route>
          <Route path="/login">
            <Login/>

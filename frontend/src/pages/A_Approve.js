@@ -61,7 +61,7 @@ const Buttn2 = styled.button`
       [content] = [...tenants];
     }
     return (
-        <div>
+        <div className='A_approve'>
             Approve Tenants
         
         <div className="container mt-5">

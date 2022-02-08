@@ -11,9 +11,7 @@ a {
 }
 
 /* HomeComponent.js */
-#home{
-    height: 100vh;
-    width: 100vw;
+#home-main{
     margin: 0 !important;
     background: linear-gradient(to bottom right, #786de1, #f44d76) no-repeat;
 }

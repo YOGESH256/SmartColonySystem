@@ -1,8 +1,6 @@
-.request-main{
-    margin-top: 85px;
-    margin-left: 25px;
-    margin-right: 25px;
-    justify-content: space-between;
+.req-main{
+    margin: 50px auto 0 auto;
+    justify-content: center;
 }
 .row-style{
     margin-top: 40px;

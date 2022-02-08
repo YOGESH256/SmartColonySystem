@@ -1,7 +1,7 @@
 .review-form-bg{
-    background-color: black;
+    background-color: rgb(243, 194, 32);
 }
-#navbar-nav {
+.review-end #navbar-nav {
     width: 100%;
 }
 

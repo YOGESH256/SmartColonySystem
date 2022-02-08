@@ -14,13 +14,14 @@ const HomeComponent = () => {
 `;
 
   return (
-    <div id="home">
+    <div id="home-main">
       <div>
       <div className="logo-container" id="home-header">
           Smart<font>Colony</font>
       </div>
-      <div>
-      <Link to="/admin"><Button> Admin </Button></Link>
+      <div style={{display: "flex", justifyContent: "right"}}>
+        <Link to="/admin" style={{margin: "10px"}}><Button> Admin </Button></Link>
+        <Link to="/login" style={{margin: "10px"}}><Button> Signin </Button></Link>
       </div>
       </div>
         <div className="cover">
