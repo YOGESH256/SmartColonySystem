@@ -6,7 +6,7 @@ export default function Review() {
 
   const [message , setMessage] = useState("")
   const [rating , setRating] = useState(0);
-  const [nature , setNature] = useState("");
+  const [nature , setNature] = useState("property");
   const [reviews , setReviews] = useState([]);
 
 
@@ -82,7 +82,7 @@ console.log(e);
                 <h1>Comments</h1>
                 { reviews.map((review) => (
                   <div class="comment mt-4 text-justify float-left"> <img src="https://i.imgur.com/yTFUilP.jpg" alt="" class="rounded-circle" width="40" height="40"/>
-                      <h4>{review.name}</h4> <span>- 20 October, 2018</span> <br/>
+                      <h4>{review.name}</h4> <span>- {review.Date}</span> <br/>
                       <p>{review.comments}</p>
                   </div>
                 ))
@@ -117,7 +117,7 @@ console.log(e);
 <label for="cars">Nature:</label>
 
 <select name="cars" id="cars"  onChange = {e => setNature(e.target.value)}>
-  <option  value="property">Apartment</option>
+  <option  value="property">Property</option>
   <option value="amenities">Amenities</option>
 
 </select>
@@ -127,7 +127,7 @@ console.log(e);
 
 
 
-                    <div class="form-inline"> <input type="checkbox" name="check" id="checkbx" class="mr-1"/> <label for="subscribe">Subscribe me to the newlettter</label> </div>
+                    
                     <div class="form-group"> <button type="submit" id="post" class="btn">Post Comment</button> </div>
                 </form>
             </div>
