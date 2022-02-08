@@ -42,9 +42,9 @@ const Amenities = () => {
                 size="lg"
                 onClick={handleStop}
                 value="false"
-                className="AmenbtnContainer space-x-4"
+                className="Amen_btnContainer space-x-4"
               >
-                Personal Amenities.
+                Personal Amenities
               </Button>
 
               <hr />

@@ -1,8 +1,8 @@
-
+import React from 'react';
  const A_Home = () => {
     return (
-        <div>
-            Admin Hoem
+        <div className="A_home">
+            Admin Home
         </div>
     )
 }

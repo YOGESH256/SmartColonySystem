@@ -1,10 +1,10 @@
+import { Container, Row} from "react-bootstrap";
 
 import "../styles/Comment.css";
 import React , {useState , useEffect} from 'react'
 
 import axios from 'axios';
 export default function Comment() {
-
   const [reviews , setReviews] = useState([]);
 
 
@@ -76,11 +76,10 @@ console.log(result.data);
 
 
             </div>
+          </div>
         </div>
+        </Row>
+      </Container>
     </div>
-
-
-
-
-    )
+  );
 }

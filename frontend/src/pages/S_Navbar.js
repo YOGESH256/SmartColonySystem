@@ -19,7 +19,7 @@ const R_Navbar = () => {
 
   return (
     <div className="S_cntct">
-             <div >
+        <div >
           <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
               <Link to="" className="logo-container">

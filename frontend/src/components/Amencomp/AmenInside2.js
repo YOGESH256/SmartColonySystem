@@ -8,7 +8,7 @@ const AmenInside2 = () => {
 <>
 
 <div className = "container">
-<h3>Personal Communities</h3>
+<h3>Personal Amenities</h3>
 <div className = "row">
 <div className = "col">
 <ul className="list-group">

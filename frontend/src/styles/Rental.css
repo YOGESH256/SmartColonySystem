@@ -12,6 +12,7 @@ Map(399), VedioTour(496), Header(523), Image(543), Amenities(566) */
     align-items: center;
     padding: 0px 40px;
     height: 80px;
+    z-index: 2;
   }
   .logo-nav {
     display: flex;
@@ -124,7 +125,7 @@ Map(399), VedioTour(496), Header(523), Image(543), Amenities(566) */
   .car main#carousel {
     grid-row: 1 / 2;
     grid-column: 1 / 8;
-    width: 100vw;
+    width: -webkit-fill-available;
     height: 500px;
     display: flex;
     align-items: center;
@@ -134,7 +135,7 @@ Map(399), VedioTour(496), Header(523), Image(543), Amenities(566) */
     perspective: 600px;
     --items: 5;
     --middle: 3;
-    --position: 1;
+    --position: 3;
     pointer-events: none;
     margin-top: 50px;
   }

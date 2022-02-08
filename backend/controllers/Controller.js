@@ -1,60 +1,52 @@
-import Property from '../models/Property.js'
-import {Tenant , Review} from '../models/Tenant.js'
-import User from '../models/User.js'
-import File from '../models/File.js'
-import Request from '../models/Request.js'
+import Property from "../models/Property.js";
+import { Tenant, Review } from "../models/Tenant.js";
+import User from "../models/User.js";
+import File from "../models/File.js";
+import Request from "../models/Request.js";
 
-import session from 'express-session'
+import session from "express-session";
 
-import bcrypt from 'bcryptjs';
-import passport from 'passport';
+import bcrypt from "bcryptjs";
+import passport from "passport";
 
-
-const getPropertyData = async(req, res) => {
+const getPropertyData = async (req, res) => {
   const products = await Property.find({});
 
-
   // console.log(products);
-  res.json(products)
-}
+  res.json(products);
+};
 
-const addPropertyData = async(req, res) => {
+const addPropertyData = async (req, res) => {
   const op = req.body;
   // console.log(op);
 
-const ol = new Property(op);
+  const ol = new Property(op);
 
-await ol.save();
+  await ol.save();
 
   res.json({
-    message: "Added sucessfully"
+    message: "Added sucessfully",
   });
-}
-
-
-
+};
 
 const login = (req, res, next) => {
-
   console.log(req.body);
 
   passport.authenticate("local-one", (err, user, info) => {
     if (err) throw err;
-    if (!user){
-
-      res.send("No User Exists")
-    }
-    else {
+    if (!user) {
+      res.send("No User Exists");
+    } else {
       req.logIn(user, (err) => {
         if (err) throw err;
         // res.status(200).json({errors: false, user: user});
-        res.send(user)
+        res.send(user);
 
         console.log(req.user);
       });
     }
   })(req, res, next);
-}
+};
 
 const register = (req, res) => {
   User.findOne({ email: req.body.email }, async (err, doc) => {
@@ -69,33 +61,23 @@ const register = (req, res) => {
         password: hashedPassword,
       });
 
-
-
       await newUser.save();
       res.send("User Created");
     }
   });
-}
+};
 
-const getUser = async(req, res) => {
-// console.log(req.passport.session.user);
-console.log(req.user);
-console.log(req.session);
+const getUser = async (req, res) => {
+  // console.log(req.passport.session.user);
+  console.log(req.user);
+  console.log(req.session);
 
+  res.send(req.user);
 
+  // The req.user stores the entire user that has been authenticated inside of it.
+};
 
-
-res.send(req.user)
-
-
- // The req.user stores the entire user that has been authenticated inside of it.
-}
-
-
-
-
- const UploadFile = async(req, res) => {
-
+const UploadFile = async (req, res) => {
   try {
     const newFile = await File.create({
       name: req.file.filename,
@@ -109,11 +91,9 @@ res.send(req.user)
       error,
     });
   }
-
 };
 
-
-const getFiles =  async (req, res) => {
+const getFiles = async (req, res) => {
   try {
     const files = await File.find();
     res.status(200).json({
@@ -126,82 +106,59 @@ const getFiles =  async (req, res) => {
       error,
     });
   }
-}
+};
 
+const documentData = async (req, res) => {
+  console.log(req.body);
 
-const documentData = async(req , res) => {
+  try {
+    const request = new Request({
+      user: req.body.userId,
+      aadharCard: req.body.aadharCard,
+      panCard: req.body.panCard,
+      extraDocument: req.body.extraDocument,
+      ContactNo: req.body.contactNo,
+      StartDate: req.body.startDate,
+      EndDate: req.body.endDate,
+      property: req.body.propertyId,
+    });
 
+    await request.save();
 
-console.log(req.body);
+    res.status(200).json({
+      status: "success",
+      message: "Request created successfully!!",
+    });
+  } catch (error) {
+    console.log(error);
+    res.json({
+      error,
+    });
+  }
+};
 
- try {
-   const request = new Request({
-     user: req.body.userId,
-     aadharCard: req.body.aadharCard,
-     panCard: req.body.panCard,
-     extraDocument: req.body.extraDocument,
-     ContactNo: req.body.contactNo,
-     StartDate: req.body.startDate,
-     EndDate: req.body.endDate,
-     property: req.body.propertyId,
-   })
+const getAllRequest = async (req, res) => {
+  try {
+    const request = await Request.find({ status: "unverified" })
+      .populate("property")
+      .populate("user");
 
+    console.log(request);
 
+    res.status(200).json({
+      status: "success",
+      request,
+    });
+  } catch (error) {
+    console.log(error);
+    res.json({
+      error,
+    });
+  }
+};
 
-   await request.save();
-
-   res.status(200).json({
-     status: "success",
-     message: "Request created successfully!!",
-   });
-
- } catch (error) {
-
-   console.log(error);
-   res.json({
-     error,
-   });
- }
-
-
-
-
-}
-
-
-const getAllRequest = async(req , res) => {
-
-
-   try {
-
-   const request = await Request.find({status: "unverified"}).populate("property").populate("user");
-
-
-   console.log(request);
-
-
-
-
-   res.status(200).json({
-     status: "success",
-     request,
-   });
-
-
-   } catch (error) {
-
-     console.log(error);
-     res.json({
-       error,
-     });
-   }
-
-}
-
-
-const tenantData = async(req , res) => {
-
-console.log(req.body);
+const tenantData = async (req, res) => {
+  console.log(req.body);
 
   try {
     const tenant = new Tenant({
@@ -216,95 +173,63 @@ console.log(req.body);
       EndDate: req.body.endDate,
       PropertyId: req.body.propertyId,
       roomno: req.body.roomno,
-      servicespassword:req.body.name + req.body.contactNo,
+      servicespassword: req.body.name + req.body.contactNo,
       rentStatus: 0,
-    })
-
-
+    });
 
     await tenant.save();
 
+    const property = await Property.findById(req.body.propertyId);
 
+    const io = property.roomnos.filter((hj) => hj != req.body.roomno);
 
-const property = await Property.findById(req.body.propertyId);
+    property.roomnos = io;
 
-const io = property.roomnos.filter(hj => hj != req.body.roomno );
-
-
-property.roomnos = io;
-
-await property.save();
-
-
-
-
-
-
+    await property.save();
 
     res.status(200).json({
       status: "success",
       message: "Request created successfully!!",
     });
-
   } catch (error) {
-
     console.log(error);
     res.json({
       error,
     });
   }
+};
 
-
-
-}
-
-
-const statusData = async(req , res) => {
-
+const statusData = async (req, res) => {
   console.log(req.body);
-  const {id , status} = req.body;
+  const { id, status } = req.body;
 
   try {
-const request = await Request.findById(id);
+    const request = await Request.findById(id);
 
-request.status = status;
-await request.save();
-
-
+    request.status = status;
+    await request.save();
   } catch (error) {
-
     console.log(error);
     res.json({
       error,
     });
   }
+};
+
+const addReviewData = async (req, res) => {
+  console.log(req.body);
+
+  try {
+    const ol = await Tenant.findOne({ userId: req.body.userId });
+    console.log(ol);
+
+    if (!ol) {
+      return res.json({
+        message: "Error",
+      });
+    }
 
 
-
-}
-
-
-const addReviewData = async(req, res) => {
-console.log(req.body);
-
-
-
-
-
-
-try {
-
-  const ol = await Tenant.findOne({userId: req.body.userId  });
-  console.log(ol);
-
-
-  if(!ol)
-  {
-    return res.json({
-      message: "Error"
-    });
-
-  }
 
   // get a new date (locale machine date time)
 var date = new Date();
@@ -337,38 +262,33 @@ console.log('date:', n);
 
 
 
-
-
-
     return res.json({
-      message: "Added Tenant Data"
+      message: "Added Tenant Data",
     });
-} catch (e) {
+  } catch (e) {
+    console.log(e);
+  }
+};
 
-console.log(e);
-}
+const allReviewsByType = async (req, res) => {
+  console.log(req.query);
+  const reviews = await Review.find({ nature: req.query.type });
 
+  res.json(reviews);
+};
 
-}
-
-
-
-
-
-const allReviewsByType = async(req , res) => {
-
-console.log(req.query);
-  const reviews = await Review.find({nature : req.query.type});
-
-
-
-
-  res.json(reviews)
-}
-
-
-
-
-
-
-export  {getPropertyData , addPropertyData , addReviewData , login , register , getUser , getFiles ,UploadFile  , documentData , getAllRequest , tenantData , statusData , allReviewsByType};
+export {
+  getPropertyData,
+  addPropertyData,
+  addReviewData,
+  login,
+  register,
+  getUser,
+  getFiles,
+  UploadFile,
+  documentData,
+  getAllRequest,
+  tenantData,
+  statusData,
+  allReviewsByType,
+};
