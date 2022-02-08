@@ -49,6 +49,7 @@ const login = (req, res, next) => {
 };
 
 const register = (req, res) => {
+  console.log(req.body);
   User.findOne({ email: req.body.email }, async (err, doc) => {
     if (err) throw err;
     if (doc) res.send("User Already Exists");
