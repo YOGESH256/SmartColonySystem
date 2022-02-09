@@ -78,8 +78,5 @@ console.log(result.data);
             </div>
           </div>
         </div>
-        </Row>
-      </Container>
-    </div>
   );
 }
