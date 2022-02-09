@@ -17,11 +17,7 @@ export default function Comment() {
 
 console.log(result.data);
   setReviews(result.data);
-
-
-
         // setFiles(files)
-
   } , [])
 
 
