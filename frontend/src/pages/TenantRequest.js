@@ -1,7 +1,8 @@
 import React  , {useEffect , useState } from 'react'
-import { Form, Button, Card, Dropdown, DropdownButton } from 'react-bootstrap';
-import "../styles/Request.css"
+// import "../styles/Request.css"
+import {Button, Card, Dropdown, DropdownButton } from 'react-bootstrap';
 import axios from 'axios'
+
 
 export default function Request() {
 
@@ -16,7 +17,7 @@ export default function Request() {
   };
 
   useEffect(() => {
-      updateInvoiceData();
+    updateInvoiceData();
   } , [])
 
   const submitHandler = async(e) => {
@@ -77,11 +78,11 @@ export default function Request() {
 
   return (
     <div class="req-main">
-      <h1 className="req-service mr-4">Unaccepted Services</h1>
-      <div class="row row-style  ">
+      <h1 className="req-service mr-4">Unaccepted Tenant Requests</h1>
+      {/* <div class="row row-style  ">
         
         { getAllRequest && getAllRequest.map(request => (
-          <form  className = ""  onSubmit = {submitHandler} id = {request._id}>
+          <form  className = ""  onSubmit={submitHandler} id={request._id}>
             <div class="col-sm-10 m-auto ">
               <div class="card">
 
@@ -105,7 +106,6 @@ export default function Request() {
 
                   <button href="#" type = "button" onClick = {() => rejectHandler(request._id)} class="p-2 m-2 btn-primary">Reject</button>
                   <button href="#"  type = "submit"  class="p-2 m-2 btn-danger">Accept </button>
-                {  /* <a href="#" class="req-rej-btn btn-primary">Give Timing</a> */}
                 </div>
                 
               </div>
@@ -113,12 +113,10 @@ export default function Request() {
           </form>
         ))}
     
-      </div>
-
-      <div className="map-team-cards">
-        { getAllRequest && getAllRequest.map(req => (
-
-          <Form onSubmit={submitHandler} id={req.id}
+      </div> */}
+      <div className='map-team-cards'>
+      { getAllRequest && getAllRequest.map(req => (
+          <form onSubmit={submitHandler} id={req._id}
             md={4} sm={6} xs={12}
             className="mb-5 tenant-card"
             border="light"
@@ -128,9 +126,9 @@ export default function Request() {
               <h2 style={{ marginBottom: "0px" }}>{req.property.type}</h2>
               <br />
               <h3 style={{ marginBottom: "8px" }}>
-                {req.property.bhk}<small className="text-muted">bhk</small>&nbsp;&nbsp;
+                {req.property.bhk}<small className="text-muted">bhk</small>&nbsp;
                 &#8377;{req.property.unitSize}<small className="text-muted">/mo</small>
-                &nbsp;&nbsp;&nbsp;{req.property.price}<small className="text-muted">sq. unit</small>
+                &nbsp;{req.property.price}<small className="text-muted">sq.</small>
               </h3>
             </Card.Header>
           
@@ -140,25 +138,25 @@ export default function Request() {
               <p><a href={`http://localhost:4000/files/${req.extraDocument}`} class="">extraDocument</a></p>
             </Card.Body>
               
-            <DropdownButton
-              title="Select room no."
-              id=""
-              onChange={e => setRoomno(e.target.value)} required
-              >
+            <select class="form-select form-select-sm mb-3 " aria-label=".form-select-lg example" onChange = {e => setRoomno(e.target.value)} required>
+              <option selected>Open this select menu</option>
               {req.property?.roomnos?.map((room) => (
-                <Dropdown.Item eventKey={room} >{room}</Dropdown.Item>
+                <option value={room} >{room}</option>
               ))}
-            </DropdownButton>
+            </select>
             
-            <Button className="btn-primary" block size="md" type=""
-            onClick={rejectHandler(req._id)} >Reject
-            </Button>
-            <Button className="btn-danger" block size="md" type="submit" >
-              Accept
-            </Button>
-          </Form>
-        ))}
+            <div style={{display: "flex", justifyContent: "space-evenly",padding: "5px"}} >
+              <Button className="btn-primary" onClick = {() => rejectHandler(req._id)} block size="md" type="submit" >
+                Reject
+              </Button>
+              <Button className="btn-danger" block size="md" type="submit" >
+                Accept
+              </Button>
+            </div>
+          </form>
+      ))}
       </div>
+    
     </div>
-  )
+    )
 }

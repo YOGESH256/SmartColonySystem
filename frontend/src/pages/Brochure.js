@@ -1,14 +1,13 @@
 import React, { useState , useEffect } from "react";
-import { Row, Form, Button } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
 import Image from "../components/Amencomp/Image";
-import AmenInside from "../components/Amencomp/AmenInside";
-import AmenInside2 from "../components/Amencomp/AmenInside2";
 import { Link } from "react-router-dom";
 // import './styles.css'
 import axios from 'axios';
 const Brochure = () => {
 
-  const [image, setImage] = useState('')
+    const [image, setImage] = useState('')
+
   const [upload, setUpload] = useState(false)
   const [files , setFiles] = useState([])
   const [allFiles , setAllFiles] = useState([])
@@ -66,7 +65,7 @@ const Brochure = () => {
       setUpload(false)
 
     } catch (error) {
-    console.error(error)
+      console.error(error)
       setUpload(false)
     }
   }
@@ -148,7 +147,7 @@ const Brochure = () => {
       setUpload(false)
 
     } catch (error) {
-    console.error(error)
+      console.error(error)
       setUpload(false)
     }
   }
@@ -181,173 +180,112 @@ const Brochure = () => {
 
   }
 
-  const [fileName, setFileName] = useState("Upload Boundary File");
-
   return (
     <>
       <Image />
-      <form  style = {{backgroundColor : 'white'}} onSubmit = {submitHandler}>
-        <div className="container mt-5">
-          <h3>Brochure </h3>
+<form  style = {{backgroundColor : 'white'}} onSubmit = {submitHandler}>
+      <div className="container mt-5">
+        <h3>Brochure </h3>
 
-          <div className="row">
-            <div className="col">
-              <div className="table-responsive table-card mt-2">
-                <table className="table table-bordered role">
-                  <thead className="thead-light">
+        <div className="row">
+          <div className="col">
+      
+            <div className="table-responsive table-card mt-2">
+              <table className="table table-bordered role">
+                <thead className="thead-light">
+                  <tr>
+                    <th id="selectFloorPlan" scope="col">
+                      <div className=" pl-0 checkbox">
+
+                        <label
+                          aria-hidden="true"
+                          for="linkCheckAll"
+                          className="m-0"
+                        >
+                          {" "}
+                        </label>
+                      </div>
+                    </th>
+                    <th scope="col">Floor Plan</th>
+                    <th scope="col">Bed</th>
+                    <th scope="col">Bath</th>
+                    <th scope="col">Sq.Ft.</th>
+                    <th scope="col">Rent</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                {  propertyData.map(property => (
+
                     <tr>
-                      <th id="selectFloorPlan" scope="col">
-                        <div className=" pl-0 checkbox">
-
-                          <label
-                            aria-hidden="true"
-                            for="linkCheckAll"
-                            className="m-0"
-                          >
-                            {" "}
-                          </label>
-                        </div>
+                      <td className="td-card-check" data-label="Landing Page"><input type="radio"  className="form-check-input" id={property._id} name="maincon" value={propertyId} onChange = {(e) => setPropertyId(property._id)} /></td>
+                      <th className="td-card-name" scope="row">
+                        <a
+                          href="javascript:void(0);"
+                          data-toggle="modal"
+                          aria-label="High-Rise Studio, opens a dialog"
+                          data-target="#myGalleryModal"
+                          onclick="opendialog('modalbodyGallery', 'ajaxhandler?handler=gallery&amp;id=372071&amp;gallerytype=floorplan', ysi.modalCarousel.init);document.getElementById('fpname').innerHTML='High-Rise Studio';"
+                        >
+                          <span data-selenium-id="Floorplan1Name">
+                            {property.type}
+                          </span>
+                        </a>
                       </th>
-                      <th scope="col">Floor Plan</th>
-                      <th scope="col">Bed</th>
-                      <th scope="col">Bath</th>
-                      <th scope="col">Sq.Ft.</th>
-                      <th scope="col">Rent</th>
+                      <td className="td-card-beds">
+                        <p className="d-block d-lg-none td-label">Beds:</p>{" "}
+                        <span data-selenium-id="Floorplan1Beds">{property.bedrooms} </span>
+                      </td>
+                      <td className="td-card-baths">
+                        <p className="d-block d-lg-none td-label">BHK:</p>{" "}
+                        <span data-selenium-id="Floorplan1Baths">{property.bhk}</span>
+                      </td>
+                      <td className="td-card-sqft">
+                        <p className="d-block d-lg-none td-label">Sq.Ft.:</p>{" "}
+                        <span data-selenium-id="Floorplan1SqFt">{property.unitSize}</span>
+                      </td>
+                      <td className="td-card-rent">
+                        <p className="d-block d-lg-none td-label">Rent:</p>
+                        <span data-selenium-id="Floorplan1Rent">Rs {property.price}</span>
+                      </td>
                     </tr>
-                  </thead>
 
-                  <tbody>
-                  {  propertyData.map(property => (
+                  ))
+                }
+                </tbody>
+              </table>
+            </div>
 
-                      <tr>
-                        <td className="td-card-check" data-label="Landing Page"><input type="radio"  className="form-check-input" id={property._id} name="maincon" value={propertyId} onChange = {(e) => setPropertyId(property._id)} /></td>
-                        <th className="td-card-name" scope="row">
-                          <a
-                            href="javascript:void(0);"
-                            data-toggle="modal"
-                            aria-label="High-Rise Studio, opens a dialog"
-                            data-target="#myGalleryModal"
-                            onclick="opendialog('modalbodyGallery', 'ajaxhandler?handler=gallery&amp;id=372071&amp;gallerytype=floorplan', ysi.modalCarousel.init);document.getElementById('fpname').innerHTML='High-Rise Studio';"
-                          >
-                            <span data-selenium-id="Floorplan1Name">
-                              {property.type}
-                            </span>
-                          </a>
-                        </th>
-                        <td className="td-card-beds">
-                          <p className="d-block d-lg-none td-label">Beds:</p>{" "}
-                          <span data-selenium-id="Floorplan1Beds">{property.bedrooms} </span>
-                        </td>
-                        <td className="td-card-baths">
-                          <p className="d-block d-lg-none td-label">BHK:</p>{" "}
-                          <span data-selenium-id="Floorplan1Baths">{property.bhk}</span>
-                        </td>
-                        <td className="td-card-sqft">
-                          <p className="d-block d-lg-none td-label">Sq.Ft.:</p>{" "}
-                          <span data-selenium-id="Floorplan1SqFt">{property.unitSize}</span>
-                        </td>
-                        <td className="td-card-rent">
-                          <p className="d-block d-lg-none td-label">Rent:</p>
-                          <span data-selenium-id="Floorplan1Rent">Rs {property.price}</span>
-                        </td>
-                      </tr>
+            <div className="">
+              <img src="../images/Alt.jpg" alt="" srcset="" />
 
-                    ))
-                  }
-                  </tbody>
-                </table>
-              </div>
-
-              <div className="">
-                <img src="../images/Alt.jpg" alt="" srcset="" />
-                <div className="upload">
-                
+              <div className="upload">
                 <h1 className="upload_head">Upload DOCS</h1>
-                <div class="btn-group">
-                  <button type="button" class=" btn-danger">Action</button>
-                  <button type="button" class=" btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-                    <span class="visually-hidden">Toggle Dropdown</span>
-                  </button>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    <li><hr class="dropdown-divider" /></li>
-                    <li><a class="dropdown-item" href="#">Separated link</a></li>
-                  </ul>
-                </div>
 
                 <div>
-                  <Form style={{width:"369px"}}>
-                    <Form.Group size="lg" controlId="adharCard">
-                      <Form.Label>Upload Adhar Card</Form.Label>
-                      <Form.File
-                        type="file"
-                        className="custom-file-label"
-                        id="inputFile01"
-                        custom
-                        onChange={aadharFileHandler}
-                      />
-                    </Form.Group>
-                    <Form.Group size="lg" controlId="panCard" as={Row}>
-                      <Form.Label>Upload Pan Card</Form.Label>
-                      <Form.File
-                        type="file"
-                        className="custom-file-label"
-                        id="inputFile02"
-                        custom
-                        onChange={panFileHandler}
-                      />
-                    </Form.Group>
-                    <Form.Group size="lg" controlId="passport">
-                      <Form.Label>Upload Passport Card</Form.Label>
-                      <Form.File
-                        type="file"
-                        className="custom-file-label"
-                        id="inputFile03"
-                        custom
-                        onChange={extraFileHandler}
-                      />
-                    </Form.Group>
-                    <Form.Group size="lg" controlId="contact">
-                      <Form.Label>Contact</Form.Label>
-                      <Form.Control
-                        type="text"
-                        value={contactNo}
-                        onChange={e => setContactNo(e.target.value)}
-                      />
-                    </Form.Group>
-                    <Form.Group size="lg" controlId="password">
-                      <Form.Label>Start Date</Form.Label>
-                      <Form.Control
-                        type="date"
-                        value={startDate}
-                        onChange={e => setStartDate(e.target.value)}
-                      />
-                    </Form.Group>
-                    <Form.Group size="lg" controlId="password">
-                      <Form.Label>End Date</Form.Label>
-                      <Form.Control
-                        type="date"
-                        value={endDate}
-                        onChange={e => setEndDate(e.target.value)}
-                      />
-                    </Form.Group>
-                    <Button block size="md" type="submit">
-                      Upload
-                    </Button>
-                  </Form>
-                </div>
+                  <h6 className="" >Upload Aadhar Card</h6>
+                  <input className="space" type="file" name="" id=""   custom onChange = {aadharFileHandler}   />
+                  <h6 className="">Upload PAN card</h6>
+                  <input className="space" type="file" name="" id="" custom onChange = {panFileHandler}  />
+                  <h6 className="">UploadPassport </h6>
+                  <input className="space" type="file" name="" id="" custom onChange = {extraFileHandler} />
 
-                </div>
+                  <h6 className="">Contact </h6>
+                  <input className="space"  value={contactNo} onChange = {e => setContactNo(e.target.value)} type = "text"  />
 
+                  <h6 className="">Start date </h6>
+                  <input className="space" value={startDate} onChange = {e => setStartDate(e.target.value)}  type = "date"  />
+                  <h6 className="">End Date </h6>
+                  <input className="space" value={endDate} onChange = {e => setEndDate(e.target.value)}  type = "date"  />
+                </div>
+              
+                <button type="submit" class="btn-primary submit-btn">Primary</button>
               </div>
 
             </div>
-
           </div>
-
         </div>
+      </div>
       </form>
     </>
   );
