@@ -1,14 +1,18 @@
 import React, { useState } from "react";
-// import "../styles/Login.css";
+import { Link } from "react-router-dom";
+import {Button} from "react-bootstrap"
+import "../styles/Profile.css";
 import Axios from "axios";
 
-function Login() {
+function LoginPage() {
   const [registerUsername, setRegisterUsername] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
   const [registerEmail, setRegisterEmail] = useState("");
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const [data, setData] = useState(null);
+  const [y,sety] = useState(true)
+  const change =()=> sety(!y);
   const register = async() => {
 
 const data = {
@@ -45,45 +49,61 @@ const ol =  JSON.parse(localStorage.getItem('User'))
 setData(ol);
 
   };
+
   return (
-    <div className="container">
-      <div>
-        <h1>Register</h1>
-        <input
-          placeholder="username"
-          onChange={(e) => setRegisterUsername(e.target.value)}
-        />
-        <input
-          placeholder="password"
-          onChange={(e) => setRegisterPassword(e.target.value)}
-        />
-        <input
-          placeholder="email"
-          onChange={(e) => setRegisterEmail(e.target.value)}
-        />
-        <button onClick={register}>Submit</button>
+    <div className="login-main">
+      <div class="container-fluid">
+        <Link to="" className="logo-container">
+          Smart<font>Colony</font>
+        </Link>
+      </div>
+      <div className={ y ?"signup x":"signup"}>
+        <div style={{display:"grid", justifyContent:"center", margin:"10px 0"}}>
+          <h1>Register</h1>
+          <label className="label">Username</label>
+          <input className="space"
+            placeholder="username"
+            onChange={(e) => setRegisterUsername(e.target.value)}
+          />
+          <label className="label">Email</label>
+          <input className="space"
+            placeholder="email"
+            onChange={(e) => setRegisterEmail(e.target.value)}
+          />
+          <label className="label">Password</label>
+          <input className="space"
+            placeholder="password"
+            onChange={(e) => setRegisterPassword(e.target.value)}
+          />
+          <Button className="space" onClick={register}>Submit</Button>
+          <div onClick={change}>Already have an account.</div>
+        </div>
+      </div>
+      <div className={ y ?"signin":"signin x"}>
+        <div style={{display:"grid", justifyContent:"center", margin:"10px 0"}}>
+          <h1>Login</h1>
+          <label className="label">Email</label>
+          <input className="space"
+            placeholder="email"
+            onChange={(e) => setLoginEmail(e.target.value)}
+          />
+          <label className="label">Password</label>
+          <input className="space"
+            placeholder="password"
+            onChange={(e) => setLoginPassword(e.target.value)}
+          />
+          <Button className="space" onClick={login} style={{margin:"10px"}}>Submit</Button>
+          <div onClick={change}>New User? Register</div>
+        </div>
+        <div style={{display: "grid"}}>
+            <Button onClick={getUser} style={{}}>Get User</Button>
+            {data ? <h1>Welcome Back {data.username}</h1> : null}
+        </div>
       </div>
 
-      <div>
-        <h1>Login</h1>
-        <input
-          placeholder="email"
-          onChange={(e) => setLoginEmail(e.target.value)}
-        />
-        <input
-          placeholder="password"
-          onChange={(e) => setLoginPassword(e.target.value)}
-        />
-        <button onClick={login}>Submit</button>
-      </div>
 
-      <div>
-        <h1>Get User</h1>
-        <button onClick={getUser}>Submit</button>
-        {data ? <h1>Welcome Back {data.username}</h1> : null}
-      </div>
     </div>
   );
 }
 
-export default Login;
+export default LoginPage;

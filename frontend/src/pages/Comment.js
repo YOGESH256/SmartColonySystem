@@ -17,11 +17,7 @@ export default function Comment() {
 
 console.log(result.data);
   setReviews(result.data);
-
-
-
         // setFiles(files)
-
   } , [])
 
 
@@ -30,7 +26,7 @@ console.log(result.data);
         <div className="container mt-3 d-flex justify-content-center">
         <div className="row d-flex justify-content-center">
                     <div className="button-add">
-                    <a href = "/review"><button type="button"  class="btn btn-primary button-comment">+</button></a>
+                    <a href = "/review"><button type="button" class="btn btn-primary button-comment">+</button></a>
                     </div>
             <div className="col-md-8">
                 <div className="text-left">
@@ -38,8 +34,9 @@ console.log(result.data);
                 </div>
 
                 { reviews.map((review) => (
-                  <div className="card p-3 mb-2">
-                      <div className="d-flex flex-row"> <img src="https://i.imgur.com/dwiGgJr.jpg" height="40" width="40" className="rounded-circle"/>
+                  <div className="card mb-2" style={{width:"50vw"}}>
+                      <div className="d-flex flex-row" style={{padding:"5px 5px"}}> 
+                          <img src="https://i.imgur.com/dwiGgJr.jpg" height="40" width="40" className="rounded-circle"/>
                           <div className="d-flex flex-column ms-2">
                               <h6 className="mb-1 text-primary space-between ">{review.name} </h6>
                               <h6 style={{float:'right'}}> {review.rating}⭐</h6>
@@ -51,28 +48,13 @@ console.log(result.data);
                               <div className="d-flex align-items-center"> <i className="fa fa-heart-o"></i> <span className="ms-1 fs-10">Like</span> </div>
                               <div className="d-flex align-items-center"> <i className="fa fa-comment-o"></i> <span className="ms-1 fs-10">Comments</span> </div>
                           </div>
-                          <div className="d-flex flex-row"> <span className="text-muted fw-normal fs-10">{review.Date}</span> </div>
+                          <div className="d-flex flex-row" style={{padding:"0 5px 0 0"}}> <span className="text-muted fw-normal fs-10">{review.Date}</span> </div>
                       </div>
                   </div>
 
                 ))
 
                 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
             </div>
