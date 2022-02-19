@@ -48,7 +48,10 @@ const R_Navbar = () => {
               <Link to={`${url}/rentroom`}>Brochure</Link>
             </li>
             <li className="R_option" onClick={closeMobileMenu}>
-              <Link to={`${url}/contact`}>Conatact Us</Link>
+              <Link to={`${url}/contact`}>Contact Us</Link>
+            </li>
+            <li className="R_option" onClick={closeMobileMenu}>
+              <Link to={`/comments`}>Reviews</Link>
             </li>
           </ul>
         </div>

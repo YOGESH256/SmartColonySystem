@@ -1,6 +1,6 @@
 import { Container, Row} from "react-bootstrap";
 import { Link } from 'react-router-dom';
-import styled from 'styled-components'; 
+import styled from 'styled-components';
 
 const HomeComponent = () => {
   const Button = styled.button`
@@ -20,7 +20,7 @@ const HomeComponent = () => {
           Smart<font>Colony</font>
       </div>
       <div style={{display: "flex", justifyContent: "right"}}>
-        <Link to="/admin" style={{margin: "10px"}}><Button> Admin </Button></Link>
+        <Link to="/adminlogin" style={{margin: "10px"}}><Button> Admin </Button></Link>
         <Link to="/login" style={{margin: "10px"}}><Button> Signin </Button></Link>
       </div>
       </div>

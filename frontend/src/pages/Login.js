@@ -3,8 +3,12 @@ import { Link } from "react-router-dom";
 import {Button} from "react-bootstrap"
 import "../styles/Profile.css";
 import Axios from "axios";
+import { useHistory } from 'react-router-dom';
 
 function LoginPage() {
+
+  const history = useHistory()
+
   const [registerUsername, setRegisterUsername] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
   const [registerEmail, setRegisterEmail] = useState("");
@@ -35,7 +39,15 @@ const data = {
     }
 
      let jk = await Axios.post("http://localhost:4000/login" , data ).catch(e => console.log(e.message));
-     localStorage.setItem('User', JSON.stringify(jk.data));
+
+
+
+     if(jk.data.role === 'user')
+     {
+       localStorage.setItem('User', JSON.stringify(jk.data));
+       history.push('/rental')
+     }
+
 
   };
   const getUser = async() => {

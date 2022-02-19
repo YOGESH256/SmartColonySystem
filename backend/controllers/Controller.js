@@ -42,6 +42,8 @@ const login = (req, res, next) => {
         // res.status(200).json({errors: false, user: user});
         res.send(user);
 
+
+
         console.log(req.user);
       });
     }
@@ -221,7 +223,7 @@ const addReviewData = async (req, res) => {
   console.log(req.body);
 
   try {
-    const ol = await Tenant.findOne({ userId: req.body.userId });
+    const ol = await Tenant.findOne({ user: req.body.userId });
     console.log(ol);
 
     if (!ol) {
@@ -278,6 +280,15 @@ const allReviewsByType = async (req, res) => {
   res.json(reviews);
 };
 
+
+const  getTenantData = async(req , res) => {
+
+  const tenants = await Tenant.find({});
+
+  res.json(tenants);
+
+}
+
 export {
   getPropertyData,
   addPropertyData,
@@ -292,4 +303,5 @@ export {
   tenantData,
   statusData,
   allReviewsByType,
+  getTenantData
 };

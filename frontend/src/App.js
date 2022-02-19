@@ -13,6 +13,7 @@ import Profile from './pages/Profile'
 import Request from './pages/Request'
 import Login from './pages/Login'
 import WorkerLogin from './pages/WorkerLogin'
+import AdminLogin from './pages/AdminLogin'
 import AdminValidation from './pages/AdminValidation'
 import './App.css';
 
@@ -26,6 +27,9 @@ function App() {
       <Switch location={location} key={location.key}>
           <Route exact path="/">
             <Home />
+          </Route>
+          <Route exact path="/adminlogin">
+            <AdminLogin />
           </Route>
           <Route path="/home">
             <Home />

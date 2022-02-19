@@ -1,8 +1,14 @@
 import React, { useState } from "react";
 // import "../styles/Login.css";
 import Axios from "axios";
+import { useHistory } from 'react-router-dom';
+
 
 function Login() {
+
+
+  const history = useHistory()
+
   const [registerUsername, setRegisterUsername] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
   const [registerEmail, setRegisterEmail] = useState("");
@@ -28,17 +34,29 @@ const data = {
       email: loginEmail,
       password: loginPassword,
     }
+     let jk = await Axios.post("http://localhost:4000/workerlogin" , data ).catch(e => console.log(e.message));
 
-    await Axios.post("http://localhost:4000/workerlogin" , data ).then((res) => console.log(res)).catch(e => console.log(e.message));
+console.log(jk);
+    // await Axios.post("http://localhost:4000/workerlogin" , data ).then((res) => console.log(res)).catch(e => console.log(e.message));
+
+    if(jk.data.role === 'worker')
+    {
+      localStorage.setItem('Worker', JSON.stringify(jk.data));
+      history.push('/service')
+    }
 
 
   };
   const getUser = async() => {
 
-    await Axios.get("http://localhost:4000/worker").then((res) => {
-      setData(res.data);
-      console.log(res.data);
-    }).catch(e => console.log(e.message));
+    // await Axios.get("http://localhost:4000/worker").then((res) => {
+    //   setData(res.data);
+    //   console.log(res.data);
+    // }).catch(e => console.log(e.message));
+
+    const ol =  JSON.parse(localStorage.getItem('Worker'))
+    console.log(ol);
+    setData(ol);
 
 
   };
@@ -46,22 +64,7 @@ const data = {
 
   return (
     <div className="container">
-      <div>
-        <h1>Register</h1>
-        <input
-          placeholder="username"
-          onChange={(e) => setRegisterUsername(e.target.value)}
-        />
-        <input
-          placeholder="password"
-          onChange={(e) => setRegisterPassword(e.target.value)}
-        />
-        <input
-          placeholder="email"
-          onChange={(e) => setRegisterEmail(e.target.value)}
-        />
-        <button onClick={register}>Submit</button>
-      </div>
+
 
       <div>
         <h1>Login</h1>

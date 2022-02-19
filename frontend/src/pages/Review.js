@@ -47,6 +47,7 @@ console.log(result.data);
     }
 
 try {
+  console.log(lo);
 
   const {data} = await axios.post('http://localhost:4000/addreview' ,  lo);
 

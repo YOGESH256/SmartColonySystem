@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useState  , useEffect} from 'react';
 import NavbarCollapse from 'react-bootstrap/esm/NavbarCollapse';
 import styled from 'styled-components';
 import {content} from '../not to use/A_aprvDetls';
 import {Modal} from './A_Modal'; // ye content dekhke verify karne, under process...
+import axios from 'axios';
 
 const Containr = styled.div`
   display: flex;
@@ -32,8 +33,17 @@ const Buttn2 = styled.button`
 `;
 
  const A_Approve = () => {
-    const [tenants, setTenents] = useState(content);
+    const [tenants, setTenants] = useState(content);
     const [showModal, setShowModal] = useState(false);
+
+
+    useEffect(async() => {
+      let result = await axios.get('http://localhost:4000/getalltenants')
+                              .catch(e => console.log(e))
+      setTenants(result.data);
+      console.log(result);
+
+    } , [])
 
     const openModal = () => {
       setShowModal(prev => !prev);
@@ -63,7 +73,7 @@ const Buttn2 = styled.button`
     return (
         <div className='A_approve'>
             Approve Tenants
-        
+
         <div className="container mt-5">
         <h3>Brochure </h3>
         <div className="row">
@@ -73,26 +83,22 @@ const Buttn2 = styled.button`
                 <thead className="thead-light">
                   <tr>
                     <th scope="col">User Name</th>
-                    <th scope="col">Floor No.</th>
-                    <th scope="col">View Docs</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Comments</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Contact No</th>
+                    <th scope="col">No of Months</th>
+                    <th scope="col">Room No </th>
                   </tr>
                 </thead>
                 <tbody>
                 {tenants.map((info, index) => {
           return (
             <tr>
-            <th scope="col">{info.user}</th>
-            <th scope="col">{info.floor}</th>
-            <th scope="col">
-                <Containr>
-                <Buttn onClick={openModal}>Content</Buttn>
-                {/* <Modal showModal={showModal} setShowModal={setShowModal} /> */}
-                </Containr>
-            </th>
-            <th scope="col">{StatusBttn(info,index)}</th>
-            <th scope="col">{info.comment}</th>
+            <th scope="col">{info.name}</th>
+            <th scope="col">{info.email}</th>
+            <th scope="col">{info.contactNo}</th>
+            <th scope="col">{Math.floor((Math.random() * 97)) % 12}</th>
+            <th scope="col">{info.roomno}</th>
+
           </tr>
           )}
         )}
@@ -102,7 +108,7 @@ const Buttn2 = styled.button`
         </div>
         </div>
         </div>
-        <Buttn onClick={Lastly}>Done</Buttn>
+
         </div>
     )
 }
