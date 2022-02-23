@@ -1,7 +1,14 @@
-import React from "react";
+import React  , {useState} from "react";
 import {homeImg} from "../components/ImageMap";
+import { useHistory, useLocation } from 'react-router';
+import axios from 'axios'
 
 export default function Main() {
+
+  const history = useHistory();
+
+  // const [servce , setService] = useState("")
+
   const service = [
     {name:"AC Service", img:homeImg.p1},
     {name:"Appliance Repair", img:homeImg.p2},
@@ -16,6 +23,28 @@ export default function Main() {
     {name:"Spa For Women", img:homeImg.p11},
     {name:"Massage For Men", img:homeImg.p12},
   ]
+
+const selectWorker = (op) => {
+
+console.log(op);
+
+
+history.push({
+  pathname: '/workerselect',
+  state: {  // location state
+    servce : op,
+    serce : "m"
+  },
+});
+
+
+
+}
+
+
+
+
+
   let SectionA = ()=>{
     return(
       <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 bac shadow-lg p-3 mb-5 bg-body rounded ml-10">
@@ -23,9 +52,12 @@ export default function Main() {
           return(
             <div className="col">
               <div className="card shadow-sm">
-                <img src={info.img} alt="" height="250px" className="circular" />
+
+              <a   onClick = {() => {  selectWorker(info.name);   }}  >
+                <img  src={info.img}  style = {{ "padding-left" : "50px"}}alt="" height="250px" className="circular" />
+              </a>
                 <div className="card-body center">
-                  <p className="card-text pd-10"><strong>{info.name}</strong>{" "}
+                  <p   style = {{ "padding-left" : "150px"}}className="card-text pd-10"><strong>{info.name}</strong>{" "}
                   </p>
                 </div>
               </div>
@@ -44,6 +76,7 @@ export default function Main() {
       >
         <div className="carousel-inner">
           <div className="carousel-item active">
+
             <img
               src={homeImg.carousel}
               className="d-block w-100"
@@ -72,8 +105,11 @@ export default function Main() {
           </p>
           <div className="img">
             <div>
+
               <img src={homeImg.p1} alt="" />
+
               <p>Air Conditioner</p>
+
             </div>
             <div>
               <img src={homeImg.appl2} alt="" />
@@ -187,7 +223,7 @@ export default function Main() {
           </div>
         </div>
       </section>
-      
+
       <div class="footer-basic">
         <footer>
           <div class="social">

@@ -2,13 +2,14 @@ import React  , {useEffect , useState } from 'react'
 // import "../styles/Request.css"
 import {Button, Card, Dropdown, DropdownButton } from 'react-bootstrap';
 import axios from 'axios'
-
-
-
-
+import { useLocation } from 'react-router-dom';
 
 export default function Request() {
 
+  const location = useLocation();
+
+
+console.log(location.state);
 
   const [getAllRequest , setAllRequest] = useState();
   const [reques , setReques] = useState();
@@ -20,12 +21,9 @@ export default function Request() {
     setAllRequest(result.data.request);
   };
 
-
   useEffect(() => {
     updateInvoiceData();
   } , [])
-
-
 
   const submitHandler = async(e) => {
     e.preventDefault();

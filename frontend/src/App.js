@@ -14,6 +14,7 @@ import Request from './pages/Request'
 import Login from './pages/Login'
 import WorkerLogin from './pages/WorkerLogin'
 import AdminLogin from './pages/AdminLogin'
+import WorkerSelection from './pages/WorkerSelection'
 import AdminValidation from './pages/AdminValidation'
 import './App.css';
 
@@ -71,6 +72,9 @@ function App() {
          </Route>
          <Route path="/adminvalidation">
            <AdminValidation/>
+         </Route>
+         <Route path="/workerselect">
+           <WorkerSelection/>
          </Route>
 
         </Switch>
