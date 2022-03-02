@@ -1,0 +1,26 @@
+.req-main{
+    margin: 50px auto 0 auto;
+    justify-content: center;
+}
+.row-style{
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+.req-service{
+    margin-left: 500px;
+    margin-top: 20px; 
+}
+.req-acpt-btn{
+    color: red;
+    background-color: white;
+    font-size: 28px;
+    border: 10px solid;
+}
+.req-rej-btn{
+    margin-left: 80px;
+    font-size: 28px;
+    color: seagreen;
+    background-color: white;
+    border: 10px solid;
+    text-decoration: dotted;
+}

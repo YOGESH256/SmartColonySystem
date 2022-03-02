@@ -1,5 +1,5 @@
 import React from 'react'
-import './Styles.css';
+// import './Styles.css';
 import { LinkContainer } from 'react-router-bootstrap'
 import { Navbar, Nav, Container, NavDropdown , Carousel } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -8,7 +8,7 @@ const AmenInside = () => {
 <>
 
 <div className = "container">
-<h3>Communities </h3>
+<h3>Community Aneities</h3>
 <div className = "row">
 <div className = "col">
 <ul className="list-group">

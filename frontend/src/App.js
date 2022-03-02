@@ -1,74 +1,76 @@
+import React from 'react';
+import { useLocation, Route, Switch } from "react-router-dom";
 
+import Home from './pages/HomeComponent'
+import Admin from './pages/A_Navbar'
+import Rental from './pages/R_Navbar'
+import Services from "./pages/S_Navbar"
+import Upload_Form from './pages/Upload_form'
+import Cart from './pages/Cart'
+import Comment from './pages/Comment'
+import Review from './pages/Review'
+import Profile from './pages/Profile'
+import Request from './pages/Request'
+import Login from './pages/Login'
+import WorkerLogin from './pages/WorkerLogin'
+import AdminValidation from './pages/AdminValidation'
+import './App.css';
 
-import Main from "./pages/Main";
-import { Contactus } from "./pages/Contactus";
-import { Contact } from "./pages/Contact";
-import VideoTour from "./pages/videoTour";
-import FloorPlans from './pages/FloorPlans';
-import Amenities from './pages/Amenities';
-import RentalHome from './pages/rentalHome'
-import Accordian from './components/Accordian'
-import AboutWorker from './components/AboutWorker'
-import ServiceDetails from './pages/ServiceDetails'
-
-
-
-
-
-
-import { BrowserRouter as Router,Switch,Route,Link  } from "react-router-dom";
 function App() {
+  const location = useLocation();
+
   return (
-    <div  >
-
-
-      <Router>
-
-
-        <Switch>
-          
-          <Route exact path="/joinus">
-           <Contactus/>
-
-
-          </Route>
-          <Route exact path="/rentalHome">
-           <RentalHome/>
-
-
-          </Route>
-          <Route exact path="/Contact">
-            <Contact/>
-          </Route>
-
-          <Route exact path="/vid">
-            <VideoTour/>
-          </Route>
+    <div className="App">
+        <div className="content" >
+        {/* <div className="content" style={{minHeight:"calc(100vh - 240px)"}}> */}
+      <Switch location={location} key={location.key}>
           <Route exact path="/">
-            <FloorPlans/>
+            <Home />
           </Route>
-          <Route exact path="/amenities">
-            <Amenities/>
+          <Route path="/home">
+            <Home />
           </Route>
-          <Route exact path="/accor">
-            <Accordian/>
+          <Route path="/admin">
+            <Admin />
           </Route>
-          <Route exact path="/Services">
-            <Main/>
+          <Route path="/rental">
+            <Rental />
           </Route>
-          <Route exact path="/Workers">
-            <AboutWorker/>
+          <Route path="/service">
+            <Services />
           </Route>
-          <Route exact path="/bc">
-            <ServiceDetails/>
+          <Route path="/uploadform">
+            <Upload_Form />
           </Route>
+         <Route path="/cart">
+            <Cart />
+          </Route>
+         <Route path="/comments">
+           <Comment/>
+         </Route>
+         <Route path="/review">
+           <Review/>
+         </Route>
+         <Route path="/card">
+           <Profile/>
+         </Route>
+         <Route path="/request">
+           <Request/>
+         </Route>
+         <Route path="/login">
+           <Login/>
+         </Route>
 
-
-
+         {/* Worker Login */}
+         <Route path="/workerlogin">
+           <WorkerLogin/>
+         </Route>
+         <Route path="/adminvalidation">
+           <AdminValidation/>
+         </Route>
 
         </Switch>
-
-      </Router>
+      </div>
     </div>
   );
 }

@@ -1,0 +1,29 @@
+.upld-box{
+    margin: 25vh;
+    height: 75vh;
+    overflow-y: scroll;
+    justify-content: center;
+    background-color: aliceblue;
+}
+.up_head_title{
+    padding: 2% 0px 2% 10%;
+}
+.upld-content{
+    padding: 2% 0px 0px 10%;
+}
+.up_doc_name{
+    margin-top: 25px;
+}
+.up_submit_btn{
+    margin-top:55px;
+}
+.upload_select{
+    margin-top: 12px;
+    height: 50px;
+}
+#upld-main{
+    background: linear-gradient(#e66465, #9198e5);
+}
+/* #upld-main .form-control{
+    height: 40px;
+} */

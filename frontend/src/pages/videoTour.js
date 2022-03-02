@@ -2,13 +2,11 @@ import React from "react";
 import YoutubeEmbed from "../components/YoutubeEmbed";
 import Testimonial from "../components/Testimonial";
 import { Reviews } from "../Utils/Reviews";
-import '../styles/videoTour.css';
-import Navbar from '../components/Navbar';
+// import '../styles/videoTour.css';
 
-export default function videoTour() {
+const VideoTour =()=> {
     return (
         <div className="videoTour">
-        <Navbar />
             <p>Video Tour</p>
             <div className="sections">
                 <h1>Hi-Rise 2 Bedroom 2 Bath</h1>
@@ -34,3 +32,5 @@ export default function videoTour() {
         </div>
     );
 }
+
+export default VideoTour;
