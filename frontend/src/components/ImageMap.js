@@ -37,4 +37,8 @@ const contactImg = {
     p2: require('../images/S_Home/jo2.jpg').default,
     p3: require('../images/S_Home/jo3.jpg').default,
 }
-export {imgs, homeImg, contactImg};
+
+const plumbers = {
+    p: require('../images/floorPlan/fl-p1.png').default,
+}
+export {imgs, homeImg, contactImg,plumbers};

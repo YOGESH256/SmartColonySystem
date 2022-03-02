@@ -9,9 +9,12 @@ import S_Home from './S_Home'
 import HowitWorks from "../components/HowitWorks";
 import Accordian from "../components/Accordian";
 import {Contactus} from './Contactus';
+import plumberNo from "../components/workfile/plumberNo";
 
+export let urldata = "";
 const R_Navbar = () => {
   let { path, url } = useRouteMatch();
+   urldata=url;
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
@@ -74,9 +77,10 @@ const R_Navbar = () => {
       <div className="S_content" style={{ minHeight: "calc(100vh - 240px)" }}>
         <Switch>
           <Route exact path={path} component={S_Home} />
-          <Route path="/service/home" component={S_Home} />
-          <Route path="/service/joinus" component={Accordian} />
-          <Route path="/service/contactus" component={Contactus} />
+          <Route path={`${url}/home`} component={S_Home} />
+          <Route path={`${url}/joinus`} component={Accordian} />
+          <Route path={`${url}/contactus`} component={Contactus} />
+          <Route path={`${url}/plumbers`} component={plumberNo} />
         </Switch>
       </div>
     </div>

@@ -1,35 +1,41 @@
 import React from "react";
+import { Link } from 'react-router-dom';
+import { urldata } from "./S_Navbar";
 import {homeImg} from "../components/ImageMap";
 
 export default function Main() {
+
   const service = [
-    {name:"AC Service", img:homeImg.p1},
-    {name:"Appliance Repair", img:homeImg.p2},
-    {name:"Painters", img:homeImg.p3},
-    {name:"Cleaning & Disinfectant", img:homeImg.p4},
-    {name:"Electricians", img:homeImg.p5},
-    {name:"Plumbers", img:homeImg.p6},
-    {name:"Carpenters", img:homeImg.p7},
-    {name:"Pest Control", img:homeImg.p8},
-    {name:"Salon For Women", img:homeImg.p9},
-    {name:"Salon For Men", img:homeImg.p10},
-    {name:"Spa For Women", img:homeImg.p11},
-    {name:"Massage For Men", img:homeImg.p12},
+    {path:"ac", name:"AC Service", img:homeImg.p1},
+    {path:"", name:"Appliance Repair", img:homeImg.p2},
+    {path:"", name:"Painters", img:homeImg.p3},
+    {path:"", name:"Cleaning & Disinfectant", img:homeImg.p4},
+    {path:"electricians", name:"Electricians", img:homeImg.p5},
+    {path:"plumbers", name:"Plumbers", img:homeImg.p6},
+    {path:"", name:"Carpenters", img:homeImg.p7},
+    {path:"", name:"Pest Control", img:homeImg.p8},
+    {path:"", name:"Salon For Women", img:homeImg.p9},
+    {path:"", name:"Salon For Men", img:homeImg.p10},
+    {path:"", name:"Spa For Women", img:homeImg.p11},
+    {path:"", name:"Massage For Men", img:homeImg.p12},
   ]
   let SectionA = ()=>{
     return(
+
       <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 bac shadow-lg p-3 mb-5 bg-body rounded ml-10">
         {service.map((info)=>{
           return(
-            <div className="col">
-              <div className="card shadow-sm">
-                <img src={info.img} alt="" height="250px" className="circular" />
-                <div className="card-body center">
-                  <p className="card-text pd-10"><strong>{info.name}</strong>{" "}
-                  </p>
+            <Link to={`${urldata}/${info.path}`} className="">
+              <div className="col">
+                <div className="card shadow-sm">
+                  <img src={info.img} alt="" height="250px" className="circular" />
+                  <div className="card-body center">
+                    <p className="card-text pd-10"><strong>{info.name}</strong>{" "}
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
+            </Link>
           )
         })}
         </div>
@@ -37,6 +43,7 @@ export default function Main() {
 
   return (
     <div className="S-hm">
+    
       <div
         id="carouselExampleCaptions"
         className="carousel slide"
@@ -53,6 +60,7 @@ export default function Main() {
             />
             <div className="carousel-caption d-none d-md-block">
               <h1>Home Service</h1>
+              <plumberNo />
               <p>Some representative placeholder content for the first slide.</p>
             </div>
           </div>
@@ -62,7 +70,6 @@ export default function Main() {
       <div className="demotext d-flex p-2 bd-highlight hex m-2">
         <br />
       </div>
-
       <SectionA />
 
       <section className="part-2">
@@ -187,7 +194,7 @@ export default function Main() {
           </div>
         </div>
       </section>
-      
+    
       <div class="footer-basic">
         <footer>
           <div class="social">
