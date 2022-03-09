@@ -1,8 +1,8 @@
 import express from 'express'
 const router = express.Router()
 import {getPropertyData , addPropertyData ,addReviewData , login , register ,
-  allReviewsByType , getUser , getFiles , UploadFile , documentData , getAllRequest , tenantData , statusData} from '../controllers/Controller.js'
-import {workerlogin , workerregister , getWorker} from '../controllers/ServicesController.js'
+  allReviewsByType , getUser , getFiles , UploadFile , documentData , getAllRequest , tenantData , statusData , getTenantData} from '../controllers/Controller.js'
+import {workerlogin , workerregister , getWorker , workerValidation} from '../controllers/ServicesController.js'
 import multer from 'multer'
 import passport from 'passport';
 import {ensureAuthenticated ,forwardAuthenticated } from '../middleware/auth.js'
@@ -52,6 +52,8 @@ router.get("/api/getFiles",)
 router.post("/tenant/register" ,  tenantData );
 router.post("/tenant/status" , statusData );
 router.post("/api/uploadFile" , upload.single("myFile"), UploadFile )
+router.get('/getalltenants'   ,  getTenantData)
+
 
 
 // Worker Routes
@@ -59,6 +61,7 @@ router.post("/api/uploadFile" , upload.single("myFile"), UploadFile )
 router.post('/workerlogin' ,    workerlogin)
 router.post('/workerregister' , workerregister)
 router.get('/worker' ,  getWorker)
+router.post('/workervalidate' ,  workerValidation)
 
 
 

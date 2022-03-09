@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, { useState  } from "react";
+import { useHistory } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import {Button} from "react-bootstrap"
 import "../styles/Profile.css";
 import Axios from "axios";
-import { useHistory } from 'react-router-dom';
 
 function LoginPage() {
 
   const history = useHistory()
+
+
 
   const [registerUsername, setRegisterUsername] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
@@ -40,12 +42,10 @@ const data = {
 
      let jk = await Axios.post("http://localhost:4000/login" , data ).catch(e => console.log(e.message));
 
-
-
-     if(jk.data.role === 'user')
+     if(jk.data.role === 'admin')
      {
-       localStorage.setItem('User', JSON.stringify(jk.data));
-       history.push('/rental')
+       localStorage.setItem('AdminUser', JSON.stringify(jk.data));
+       history.push('/admin')
      }
 
 
@@ -57,7 +57,7 @@ const data = {
     //   console.log(res.data);
     // }).catch(e => console.log(e.message));
 
-const ol =  JSON.parse(localStorage.getItem('User'))
+const ol =  JSON.parse(localStorage.getItem('AdminUser'))
 setData(ol);
 
   };
@@ -105,7 +105,7 @@ setData(ol);
             onChange={(e) => setLoginPassword(e.target.value)}
           />
           <Button className="space" onClick={login} style={{margin:"10px"}}>Submit</Button>
-          <div onClick={change}>New User? Register</div>
+
         </div>
         <div style={{display: "grid"}}>
             <Button onClick={getUser} style={{}}>Get User</Button>

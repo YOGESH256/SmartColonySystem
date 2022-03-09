@@ -1,7 +1,8 @@
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
-import tenant from './data/Tenantdata.js'
-import Tenant from './models/Tenant.js'
+import property from './data/Propertydata.js'
+// import Tenant from './models/Tenant.js'
+import Property from './models/Property.js'
 import connectDB from './connect.js';
 
 
@@ -13,16 +14,16 @@ connectDB()
 const importData  = async () =>{
   try {
     connectDB()
-    await Tenant.deleteMany()
+    await Property.deleteMany()
 
 
 
 
-    const sampleProperty = tenant.map(propert => {
+    const sampleProperty = property.map(propert => {
       return {...propert}
     })
 
-    await Tenant.insertMany(sampleProperty)
+    await Property.insertMany(sampleProperty)
 
     console.log('Data imported')
     process.exit()
@@ -38,7 +39,7 @@ const importData  = async () =>{
 
 const destroyData = async() => {
   try {
-    await Tenant.deleteMany()
+    await Property.deleteMany()
 
 
 

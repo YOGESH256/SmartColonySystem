@@ -22,7 +22,7 @@ const workerlogin = (req, res, next) => {
       req.logIn(user, (err) => {
         if (err) throw err;
 
-        res.send("Successfully Authenticated");
+        res.send(user);
         console.log(req.user);
       });
     }
@@ -30,6 +30,8 @@ const workerlogin = (req, res, next) => {
 }
 
 const workerregister = (req, res) => {
+
+  console.log(req.body);
   Worker.findOne({ email: req.body.email }, async (err, doc) => {
     if (err) throw err;
     if (doc) res.send("User Already Exists");
@@ -40,7 +42,15 @@ const workerregister = (req, res) => {
         email: req.body.email,
         username: req.body.username,
         password: hashedPassword,
+        aadharCard: req.body.aadharCard,
+        panCard: req.body.panCard,
+        extraDocument: req.body.extraDocument,
+        services: req.body.services,
+        descriptionofworker: req.body.description,
+        contactNo: req.body.contactNo,
       });
+
+      console.log(newUser);
       await newUser.save();
       res.send("Worker Created");
     }
@@ -52,6 +62,10 @@ const getWorker = (req, res) => {
   res.send(req.user);
 }
 
+const  workerValidation = async(req , res) => {
+  console.log(req.body);
+}
 
 
-export  { workerlogin , workerregister , getWorker };
+
+export  { workerlogin , workerregister , getWorker  , workerValidation};

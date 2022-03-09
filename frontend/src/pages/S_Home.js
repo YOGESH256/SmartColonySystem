@@ -1,9 +1,16 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 import { urldata } from "./S_Navbar";
+
 import {homeImg} from "../components/ImageMap";
+import { useHistory, useLocation } from 'react-router';
+import axios from 'axios'
 
 export default function Main() {
+
+  const history = useHistory();
+
+  // const [servce , setService] = useState("")
 
   const service = [
     {path:"ac", name:"AC Service", img:homeImg.p1},
@@ -19,20 +26,47 @@ export default function Main() {
     {path:"", name:"Spa For Women", img:homeImg.p11},
     {path:"", name:"Massage For Men", img:homeImg.p12},
   ]
+
+const selectWorker = (op) => {
+
+console.log(op);
+
+
+history.push({
+  pathname: '/workerselect',
+  state: {  // location state
+    servce : op,
+    serce : "m"
+  },
+});
+
+
+
+}
+
+
+
+
+
   let SectionA = ()=>{
     return(
 
       <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 bac shadow-lg p-3 mb-5 bg-body rounded ml-10">
         {service.map((info)=>{
           return(
+
             <Link to={`${urldata}/${info.path}`} className="">
-              <div className="col">
-                <div className="card shadow-sm">
-                  <img src={info.img} alt="" height="250px" className="circular" />
-                  <div className="card-body center">
-                    <p className="card-text pd-10"><strong>{info.name}</strong>{" "}
-                    </p>
-                  </div>
+
+            <div className="col">
+              <div className="card shadow-sm">
+
+              <a   onClick = {() => {  selectWorker(info.name);   }}  >
+                <img  src={info.img}  style = {{ "padding-left" : "50px"}}alt="" height="250px" className="circular" />
+              </a>
+                <div className="card-body center">
+                  <p   style = {{ "padding-left" : "150px"}}className="card-text pd-10"><strong>{info.name}</strong>{" "}
+                  </p>
+
                 </div>
               </div>
             </Link>
@@ -51,6 +85,7 @@ export default function Main() {
       >
         <div className="carousel-inner">
           <div className="carousel-item active">
+
             <img
               src={homeImg.carousel}
               className="d-block w-100"
@@ -79,8 +114,11 @@ export default function Main() {
           </p>
           <div className="img">
             <div>
+
               <img src={homeImg.p1} alt="" />
+
               <p>Air Conditioner</p>
+
             </div>
             <div>
               <img src={homeImg.appl2} alt="" />
@@ -194,7 +232,7 @@ export default function Main() {
           </div>
         </div>
       </section>
-    
+
       <div class="footer-basic">
         <footer>
           <div class="social">

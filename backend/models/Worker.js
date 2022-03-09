@@ -40,7 +40,7 @@ const workerSchema = new mongoose.Schema({
 
   },
 
-  Services: {
+  services: {
     type: String,
 
   },
