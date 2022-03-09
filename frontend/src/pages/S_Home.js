@@ -55,7 +55,7 @@ history.push({
         {service.map((info)=>{
           return(
 
-            <Link to={`${urldata}/${info.path}`} className="">
+            // <Link to={`${urldata}/${info.path}`} className="">
 
             <div className="col">
               <div className="card shadow-sm">
@@ -69,7 +69,8 @@ history.push({
 
                 </div>
               </div>
-            </Link>
+              </div>
+            // </Link>
           )
         })}
         </div>
@@ -77,7 +78,7 @@ history.push({
 
   return (
     <div className="S-hm">
-    
+
       <div
         id="carouselExampleCaptions"
         className="carousel slide"

@@ -27,7 +27,7 @@ export default function Request() {
 
     console.log(nf[0]);
     setReques(nf[0]);
-    
+
     try {
       if(roomno == 0)
       { alert("Please Enter Room no ")
@@ -80,7 +80,7 @@ export default function Request() {
     <div class="req-main">
       <h1 className="req-service mr-4">Unaccepted Tenant Requests</h1>
       {/* <div class="row row-style  ">
-        
+
         { getAllRequest && getAllRequest.map(request => (
           <form  className = ""  onSubmit={submitHandler} id={request._id}>
             <div class="col-sm-10 m-auto ">
@@ -107,12 +107,12 @@ export default function Request() {
                   <button href="#" type = "button" onClick = {() => rejectHandler(request._id)} class="p-2 m-2 btn-primary">Reject</button>
                   <button href="#"  type = "submit"  class="p-2 m-2 btn-danger">Accept </button>
                 </div>
-                
+
               </div>
             </div>
           </form>
         ))}
-    
+
       </div> */}
       <div className='map-team-cards'>
       { getAllRequest && getAllRequest.map(req => (
@@ -131,20 +131,20 @@ export default function Request() {
                 &nbsp;{req.property.price}<small className="text-muted">sq.</small>
               </h3>
             </Card.Header>
-          
+
             <Card.Body>
               <p><a href={`http://localhost:4000/files/${req.aadharCard}`} class="">AadharCard</a></p>
               <p><a href={`http://localhost:4000/files/${req.panCard}`} class="">Pancard</a></p>
               <p><a href={`http://localhost:4000/files/${req.extraDocument}`} class="">extraDocument</a></p>
             </Card.Body>
-              
+
             <select class="form-select form-select-sm mb-3 " aria-label=".form-select-lg example" onChange = {e => setRoomno(e.target.value)} required>
               <option selected>Open this select menu</option>
               {req.property?.roomnos?.map((room) => (
                 <option value={room} >{room}</option>
               ))}
             </select>
-            
+
             <div style={{display: "flex", justifyContent: "space-evenly",padding: "5px"}} >
               <Button className="btn-primary" onClick = {() => rejectHandler(req._id)} block size="md" type="submit" >
                 Reject
@@ -156,7 +156,7 @@ export default function Request() {
           </form>
       ))}
       </div>
-    
+
     </div>
     )
 }

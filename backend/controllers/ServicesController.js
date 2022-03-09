@@ -1,6 +1,7 @@
 
 import {Worker , WorkerReview} from '../models/Worker.js'
 import File from '../models/File.js'
+import Order from '../models/OrderReq.js'
 
 
 import bcrypt from 'bcryptjs';
@@ -66,6 +67,25 @@ const  workerValidation = async(req , res) => {
   console.log(req.body);
 }
 
+const getWorkerByService = async(req,res) => {
+     const serviceName = req.body.servce;
+     console.log(serviceName);
+     const getAllWorkers = await Worker.find({services : serviceName});
+     console.log(getAllWorkers);
+     res.send(getAllWorkers);
+}
+
+const order = async(req,res) => {
+  const newOrder = new Order({
+    tenant_id: req.body.tenant_id,
+    user_id: req.body.user_id,
+  });
+
+  console.log(newOrder);
+  await newOrder.save();
+  res.send("Success")
+}
 
 
-export  { workerlogin , workerregister , getWorker  , workerValidation};
+
+export  { workerlogin , workerregister , getWorker  , workerValidation, getWorkerByService,order};

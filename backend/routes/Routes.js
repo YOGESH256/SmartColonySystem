@@ -2,7 +2,7 @@ import express from 'express'
 const router = express.Router()
 import {getPropertyData , addPropertyData ,addReviewData , login , register ,
   allReviewsByType , getUser , getFiles , UploadFile , documentData , getAllRequest , tenantData , statusData , getTenantData} from '../controllers/Controller.js'
-import {workerlogin , workerregister , getWorker , workerValidation} from '../controllers/ServicesController.js'
+import {workerlogin , workerregister , getWorker , workerValidation,getWorkerByService,order} from '../controllers/ServicesController.js'
 import multer from 'multer'
 import passport from 'passport';
 import {ensureAuthenticated ,forwardAuthenticated } from '../middleware/auth.js'
@@ -62,7 +62,8 @@ router.post('/workerlogin' ,    workerlogin)
 router.post('/workerregister' , workerregister)
 router.get('/worker' ,  getWorker)
 router.post('/workervalidate' ,  workerValidation)
-
+router.post('/getWorkerByService', getWorkerByService)
+router.post('/order', order)
 
 
 

@@ -65,6 +65,9 @@ const workerSchema = new mongoose.Schema({
         enum : ['accepted','rejected' ,'unverified'],
         default: 'unverified'
   },
+  price : {
+       type : Number,
+  },
 
 reviews: [workerreviewSchema]
 
