@@ -56,7 +56,6 @@ history.push({
           return(
 
             // <Link to={`${urldata}/${info.path}`} className="">
-
             <div className="col">
               <div className="card shadow-sm">
 

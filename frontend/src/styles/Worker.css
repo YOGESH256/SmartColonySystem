@@ -39,6 +39,12 @@
   color: white;
 
 }
+.plum #sch{
+  float: left;
+  display: flex;
+  align-items: flex-end;
+  padding: 10px 13px 10px 20px
+}
 
 .plum .scroll{
   padding: 4px;

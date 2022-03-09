@@ -55,25 +55,35 @@ const submitHandler = async (tenant_id) => {
               <div class="grid-container">
                 <div class="">4 stars</div>
               </div>
+              <div class="btn draw-border">{data.contactNo}</div>
+              <div class="btn draw-border">Rs {data?.price}</div>
               <button onClick = {() => submitHandler(data._id)} class="btn draw-border">Book Now</button>
-              <button class="btn draw-border">{data.contactNo}</button>
-              <button class="btn draw-border">Rs {data?.price}</button>
-              <label for="appt">Select a time:</label>
+              {/* <label for="appt">Select a time:</label>
               <input type="time" id="appt" name="appt" />
               <input type="submit" />
               <label for="appt">Select a time:</label>
               <input type="time" id="appt" name="appt" />
-              <input type="submit" />
+              <input type="submit" /> */}
             </div>
 
-            <div id="nd-box" className='scroll'>
-              <h2>{data.services}</h2>
-              <li>Leakage<br /></li>
+            <div id="nd-box" className=''>
+              <h3>{data.services}</h3>
               <p><br />
                 {data.descriptionofworker}
               </p>
             </div>
-
+            <br />
+            <div id='sch'  className=''>
+              <div id='st_dt' style={{margin:'10px'}}>
+              <label for="st_sch">Select start time:</label><br />
+              <input type="time" id="st_sch" name="sch" />
+              </div>
+              <div id='en_dt' style={{margin:'10px'}}>
+              <label for="en_sch">Select end time:</label><br />
+              <input type="time" id="en_sch" name="sch" />
+              </div>
+              <input type="submit" style={{marginBottom:'10px'}}/>
+            </div>
           </div>
         })}
         </div>
