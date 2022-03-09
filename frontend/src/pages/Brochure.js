@@ -279,7 +279,7 @@ const Brochure = () => {
                   <input className="space" value={endDate} onChange = {e => setEndDate(e.target.value)}  type = "date"  />
                 </div>
               
-                <button type="submit" class="btn-primary submit-btn">Primary</button>
+                <button type="submit" class="btn-primary submit-btn">Upload</button>
               </div>
 
             </div>

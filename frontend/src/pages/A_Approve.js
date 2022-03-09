@@ -72,10 +72,10 @@ const Buttn2 = styled.button`
     }
     return (
         <div className='A_approve'>
-            Approve Tenants
 
+        <h1 style={{justifyContent:"center"}}>Approve Tenants</h1>
+        
         <div className="container mt-5">
-        <h3>Brochure </h3>
         <div className="row">
           <div className="col">
             <div className="table-responsive table-card mt-2">
