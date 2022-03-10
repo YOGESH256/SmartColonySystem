@@ -12,11 +12,11 @@ const AmenInside = () => {
 <div className = "row">
 <div className = "col">
 <ul className="list-group">
-  <li className="list-group-item">Cras justo odio</li>
-  <li className="list-group-item">Dapibus ac facilisis in</li>
-  <li className="list-group-item">Morbi leo risus</li>
-  <li className="list-group-item">Porta ac consectetur ac</li>
-  <li className="list-group-item">Vestibulum at eros</li>
+  <li className="list-group-item">Common hall</li>
+  <li className="list-group-item">Garden & gazebo</li>
+  <li className="list-group-item">Recreation room</li>
+  <li className="list-group-item">Indoor games room</li>
+  <li className="list-group-item">Basketball court</li>
 </ul>
 </div>
 <div className = "col">
