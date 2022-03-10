@@ -8,8 +8,15 @@
 }
 .req-service{
     margin-left: 500px;
-    margin-top: 20px; 
+    margin-top: 20px;
 }
+
+.req-card{
+  margin: 30px 120px 30px 120px;
+border: solid rebeccapurple;
+display: flex;
+}
+.req-main .card-body
 .req-acpt-btn{
     color: red;
     background-color: white;

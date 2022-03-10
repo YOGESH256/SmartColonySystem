@@ -5,6 +5,7 @@ import Home from './pages/HomeComponent'
 import Admin from './pages/A_Navbar'
 import Rental from './pages/R_Navbar'
 import Services from "./pages/S_Navbar"
+import Worker from "./pages/W_Navbar"
 import Upload_Form from './pages/Upload_form'
 import Cart from './pages/Cart'
 import Comment from './pages/Comment'
@@ -43,6 +44,9 @@ function App() {
           </Route>
           <Route path="/service">
             <Services />
+          </Route>
+          <Route path="/worker">
+            <Worker />
           </Route>
           <Route path="/uploadform">
             <Upload_Form />

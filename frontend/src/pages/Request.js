@@ -1,106 +1,57 @@
 import React from "react";
+import {useEffect,useState} from "react";
 import "../styles/Request.css"
+import axios from 'axios'
 
 export default function Request() {
+
+  const [orders , setOrders] = useState([])
+
+  const updateInvoiceData = async () => {
+    const ol =  JSON.parse(localStorage.getItem('User'))
+    // console.log(JSON.stringify(ol._id));
+    const user_id = ol._id;
+    console.log((user_id));
+    const o = {user_id}
+    const result = await axios.post('http://localhost:4000/getAllOrders', o).catch(e => console.log(e));
+    setOrders(result.data);
+  };
+
+
+  useEffect(() => {
+    updateInvoiceData();
+  } , [])
+
   return (
-    <div class="request-main">
+    <div class="req -main">
       <h1 className="req-service">Unaccepted req-services</h1>
 
       <div class="row row-style">
-        <div class="col-sm-6">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Waste pipe Leakage</h5>
-              <p class="card-text">Soham Das</p>
-              <p class="card-text">Address: 4/401,C wing Runwal Residency</p>
-              <a href="#" class="req-acpt-btn btn-primary">
-                Reject
-              </a>
-              <a href="#" class="req-rej-btn btn-primary">
-                Give Timing
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Shower Installation</h5>
-              <p class="card-text">Yogesh Khatri</p>
-              <p class="card-text">Address: 2/205,B wing, Runwal Residency</p>
-              <a href="#" class="req-acpt-btn btn-primary">
-                Reject
-              </a>
-              <a href="#" class="req-rej-btn btn-primary">
-                Give Timing
-              </a>
-            </div>
-          </div>
-        </div>
+
+
+{orders.map((order,key) => (
+  <div class="col-sm-12">
+    <div class="req-card">
+      <div class="card-body">
+        <p class="card-text">Order No : {key+1}</p>
+        <h5 class="card-title">Service : {order.worker_id.services}</h5>
+        <p class="card-text">Worker Name : {order.worker_id.username}</p>
+        <p class="card-text">contactNo : {order.worker_id.contactNo}</p>
+        {/*<a href="#" class="req-acpt-btn btn-primary">
+          Reject
+        </a>
+        <a href="#" class="req-rej-btn btn-primary">
+          Give Timing
+        </a>*/}
       </div>
-      <div class="row row-style">
-        <div class="col-sm-6">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Balcony Blockage</h5>
-              <p class="card-text">Meet patel.</p>
-              <p class="card-text">Address: 3/304, A wing, Runwal Residency</p>
-              <a href="#" class="req-acpt-btn btn-primary">
-                Reject
-              </a>
-              <a href="#" class="req-rej-btn btn-primary">
-                Give Timing
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Tap Repair</h5>
-              <p class="card-text">Salman Khan</p>
-              <p class="card-text">Address: 2/204, C wing, Runwal Residency</p>
-              <a href="#" class="req-acpt-btn btn-primary">
-                Reject
-              </a>
-              <a href="#" class="req-rej-btn btn-primary">
-                Give Timing
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row row-style">
-        <div class="col-sm-6">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Toilet Blockage</h5>
-              <p class="card-text">Katrina Kaif</p>
-              <p class="card-text">Address: 6/605, A wing, Runwal Residency</p>
-              <a href="#" class="req-acpt-btn btn-primary">
-                Reject
-              </a>
-              <a href="#" class="req-rej-btn btn-primary">
-                Give Timing
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Bath Tub Installation</h5>
-              <p class="card-text">Vicky Kaushal</p>
-              <p class="card-text">Address: 2/208, D wing, Runwal Residency</p>
-              <a href="#" class="req-acpt-btn btn-primary">
-                Reject
-              </a>
-              <a href="#" class="req-rej-btn btn-primary">
-                Give Timing
-              </a>
-            </div>
-          </div>
-        </div>
+    </div>
+    </div>
+
+))}
+
+
+
+
       </div>
     </div>
   );

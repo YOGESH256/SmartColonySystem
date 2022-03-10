@@ -7,15 +7,15 @@ import "../styles/Admin.css";
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import { IconContext } from 'react-icons';
-import {A_SidebarData} from "./SidebarData";
+import {W_SidebarData} from "./SidebarData";
 
-import A_Home from "./A_Home";
+import W_Home from "./W_Home";
 import TenantRequest from "./TenantRequest";
-import A_Approve from "./A_Approve";
+import W_Approve from "./W_Approve";
 
 
 
-const A_Navbar = () => {
+const W_Navbar = () => {
   let { path, url } = useRouteMatch();
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
@@ -38,7 +38,7 @@ const A_Navbar = () => {
                 <AiIcons.AiOutlineClose />
               </Link>
             </li>
-            {A_SidebarData.map((item, index) => {
+            {W_SidebarData.map((item, index) => {
               return (
                 <li key={index} className={item.cName}>
                   <Link to={item.path}>
@@ -82,14 +82,13 @@ const A_Navbar = () => {
       </div>
       <div className="R_content" style={{ minHeight: "calc(100vh - 240px)" }}>
         <Switch>
-          <Route exact path={path} component={A_Home} />
-          <Route path="/admin/home" component={A_Home} />
-          <Route path="/admin/tenantrequest" component={TenantRequest} />
-          <Route path="/admin/approve" component={A_Approve} />
+          <Route exact path={path} component={W_Home} />
+          <Route path="/worker/home" component={W_Home} />
+          <Route path="/worker/approve" component={W_Approve} />
         </Switch>
       </div>
     </div>
   );
 };
 
-export default A_Navbar;
+export default W_Navbar;

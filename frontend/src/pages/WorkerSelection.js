@@ -25,12 +25,12 @@ useEffect(() => {
 } , [])
 
 
-const submitHandler = async (tenant_id) => {
+const submitHandler = async (worker_id) => {
 
   const ol =  JSON.parse(localStorage.getItem('User'))
   // console.log(ol._id);
   const user_id = ol._id;
-  const i = {tenant_id,user_id}
+  const i = {worker_id,user_id}
   console.log(i);
   const result = await axios.post('http://localhost:4000/order',i).catch(e => console.log(e));
   console.log(result);
@@ -55,7 +55,7 @@ const submitHandler = async (tenant_id) => {
               <div class="grid-container">
                 <div class="">4 stars</div>
               </div>
-              <button onClick = {() => submitHandler(data._id)} class="btn draw-border">Book Now</button>
+              <button onClick = {() => submitHandler(data._id)} class="btn draw-border"><a href="/request">Book Now</a></button>
               <button class="btn draw-border">{data.contactNo}</button>
               <button class="btn draw-border">Rs {data?.price}</button>
               <label for="appt">Select a time:</label>

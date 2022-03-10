@@ -2,6 +2,7 @@
 import {Worker , WorkerReview} from '../models/Worker.js'
 import File from '../models/File.js'
 import Order from '../models/OrderReq.js'
+import { Tenant } from "../models/Tenant.js";
 
 
 import bcrypt from 'bcryptjs';
@@ -76,9 +77,15 @@ const getWorkerByService = async(req,res) => {
 }
 
 const order = async(req,res) => {
+
+  console.log(req.body.user_id);
+
+  const result = await Tenant.findOne({userId : req.body.user_id})
+  if(!result) res.send("Not a Tenant");
+  console.log(result);
   const newOrder = new Order({
-    tenant_id: req.body.tenant_id,
-    user_id: req.body.user_id,
+    worker_id: req.body.worker_id,
+    tenant_id: result._id,
   });
 
   console.log(newOrder);
@@ -86,6 +93,25 @@ const order = async(req,res) => {
   res.send("Success")
 }
 
+const getAllOrders = async(req,res) => {
+    const o =  req.body;
+    console.log(o);
+    const reh = await Tenant.findOne({userId : o.user_id})
+    console.log(reh);
+    if(!reh) res.send("Not a Tenant");
+    const result = await Order.find({tenant_id : reh._id}).populate("worker_id");
+    console.log(result);
+    res.send(result);
+}
+
+const getWorkerOrders = async(req,res) => {
+    const o =  req.body;
+    console.log(o);
+    const result = await Order.find({worker_id : o.worker_id}).populate("tenant_id");
+    console.log(result);
+    res.send(result);
+}
 
 
-export  { workerlogin , workerregister , getWorker  , workerValidation, getWorkerByService,order};
+
+export  { workerlogin , workerregister , getWorker  , workerValidation, getWorkerByService,order,getAllOrders,getWorkerOrders};
