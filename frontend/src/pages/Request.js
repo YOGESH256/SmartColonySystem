@@ -15,6 +15,7 @@ export default function Request() {
     const o = {user_id}
     const result = await axios.post('http://localhost:4000/getAllOrders', o).catch(e => console.log(e));
     setOrders(result.data);
+    
   };
 
 
@@ -34,7 +35,7 @@ export default function Request() {
     <div class="req-card">
       <div class="card-body">
         <p class="card-text">Order No : {key+1}</p>
-        <h5 class="card-title">Service : {order.worker_id.services}</h5>
+        <h5 class="card-title">Service : {order.worker_id?.services}</h5>
         <p class="card-text">Worker Name : {order.worker_id.username}</p>
         <p class="card-text">contactNo : {order.worker_id.contactNo}</p>
         {/*<a href="#" class="req-acpt-btn btn-primary">
